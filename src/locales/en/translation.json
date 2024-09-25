@@ -1,0 +1,63 @@
+{
+  "welcome": "Welcome",
+  "hello": "Hello world, i am",
+  "description": "This is my portfolio.",
+  "formErrors": {
+    "name": "Name is required",
+    "email": "Email is required",
+    "message": "Message is required",
+    "sending": "Failed to send email. Please try again."
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send"
+  },
+  "cards": {
+    "1": {
+      "image": "https://Image/image1.jpg",
+      "alt_img": "Card 1 image",
+      "title": "Card 1",
+      "description": "Card 1 description",
+      "www": "https://www1",
+      "wwwtext": "Web",
+      "github": "https://github.com/yourusername/yourproject1",
+      "githubtext": "Source code",
+      "react": true,
+      "node": true,
+      "typescript": true,
+      "docker": true,
+      "postgre": true
+    },
+    "2": {
+      "image": "https://Image/image2.jpg",
+      "alt_img": "Card 2 image",
+      "title": "Card 2",
+      "description": "Card 2 description",
+      "www": "https://www2",
+      "wwwtext": "Web",
+      "github": "https://github.com/yourusername/yourproject2",
+      "githubtext": "Source code",
+      "react": true
+    },
+    "3": {
+      "image": "https://Image/image3.jpg",
+      "alt_img": "Card 3 image",
+      "title": "Card 3",
+      "description": "Card 3 description",
+      "www": "https://www3",
+      "wwwtext": "Web",
+      "github": "https://github.com/yourusername/yourproject3",
+      "githubtext": "Source code",
+      "node": true
+    }
+  },
+  "loading": "Loading...",
+  "contact": {
+    "header": "Contact:",
+    "text": "This is my contact text",
+    "email": "contact@anibal-flores.com"
+  },
+  "footer": "© 2024 by Anibal Flores | Let's keep evolving 🛠️"
+}

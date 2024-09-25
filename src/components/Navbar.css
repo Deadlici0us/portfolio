@@ -1,0 +1,16 @@
+.navbar {
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  border-radius: 1rem;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: var(--navbar-bg);
+  transition: background-color var(--transition-duration);
+  animation: fade-down 0.5s 0.4s backwards;
+  background: linear-gradient(to bottom, transparent, var(--navbar-gradient));
+}

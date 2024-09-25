@@ -1,0 +1,35 @@
+/* ThemeToggle.css */
+
+.theme-toggle {
+  padding-right: 2.4rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  animation: fade-down 0.5s 0.4s backwards;
+}
+
+.icon {
+  font-size: 1.5rem; /* Adjust icon size */
+  color: transparent; /* Initially hidden */
+  transition: color 0.3s; /* Smooth color transition */
+  position: absolute; /* Ensure the icons stack on top of each other */
+}
+
+.icon.light {
+  filter: brightness(80%); /* Reduces the brightness */
+  opacity: 0.7; /* Makes the icon less intense */
+  color: #000; /* Black color for light theme */
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.icon.dark {
+  filter: brightness(80%); /* Reduces the brightness */
+  opacity: 0.7; /* Makes the icon less intense */
+  color: #ff0; /* Yellow color for dark theme */
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.icon:hover {
+  opacity: 1; /* Fully visible on hover */
+  filter: brightness(100%); /* Returns to full brightness on hover */
+}

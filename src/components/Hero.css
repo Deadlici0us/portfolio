@@ -1,0 +1,46 @@
+.hero {
+  padding: 2rem;
+  padding-bottom: 0rem;
+  margin-left: clamp(0px, (100vw - 320px) / 2, 5vw);
+  margin-right: clamp(0px, (100vw - 320px) / 2, 5vw);
+  margin-bottom: 0rem;
+  border-radius: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  height: 90vh;
+  flex-direction: column;
+  animation: fade 0.5s 0s backwards;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    var(--intro-gradient) 75%,
+    var(--intro-gradient2) 100%
+  );
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+.terminal-prompt {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.description {
+  font-size: clamp(1rem, 6vw, 2rem);
+  text-align: right;
+  color: var(--description-text-color);
+  font-family: Courier;
+  margin-right: 10vw;
+}
+
+.welcome {
+  font-size: clamp(0.9rem, 6vw, 1.8rem);
+  text-align: left;
+  margin-top: 10vh;
+  margin-left: 10vw;
+}

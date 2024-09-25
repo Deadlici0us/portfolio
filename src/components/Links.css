@@ -1,0 +1,39 @@
+.links_panel {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.links_icon {
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+  border: none;
+  cursor: pointer;
+  animation: pulse 3s infinite;
+}
+
+.icon_linkedin {
+  animation-delay: 0s;
+}
+
+.icon_github {
+  animation-delay: 1s;
+}
+
+.icon_email {
+  animation-delay: 2s;
+}
+
+.links_paragraph {
+  display: flex;
+  align-items: center;
+}
+
+.links_icon:hover {
+  background-color: #00fff2;
+  transition-duration: 0.5s; /* Smooth hover-out effect */
+}

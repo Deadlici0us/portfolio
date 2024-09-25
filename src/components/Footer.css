@@ -1,0 +1,11 @@
+.footer {
+  padding: 2rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  height: 10rem;
+  flex-direction: column;
+  animation: fade 0.5s 0s backwards;
+}

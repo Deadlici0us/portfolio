@@ -1,0 +1,176 @@
+.contact {
+  display: grid;
+  border-radius: 2rem;
+  margin-left: clamp(0px, (100vw - 320px) / 2, 9vw);
+  margin-right: clamp(0px, (100vw - 320px) / 2, 9vw);
+  margin-bottom: 2rem;
+  padding: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+  background: var(--card-bg);
+  grid-template-columns: repeat(auto-fit, clamp(260px, 30vw, 400px));
+  opacity: 0;
+}
+
+.contact.show {
+  opacity: 1;
+  animation: fade-left 0.5s ease-out forwards;
+}
+
+.contact_info {
+  display: flex;
+  margin: 2rem 0rem 2rem 0rem;
+  height: 26rem;
+  width: fit-content;
+  align-items: baseline;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact_form {
+  display: flex;
+  margin: 2rem 0rem 2rem 0rem;
+  height: 26rem;
+  width: auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h1 {
+  margin: 0rem;
+}
+
+.name,
+.email,
+.message,
+.send_button {
+  width: clamp(200px, 30vw, 400px);
+  padding: 0.3rem;
+}
+
+.message {
+  resize: none;
+  height: 10rem;
+  border: 2px solid trans;
+}
+
+.send_button {
+  color: var(--text-color);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--intro-gradient) 50%,
+    var(--intro-gradient2) 100%
+  );
+  border-radius: 1rem;
+}
+/* Input fields with errors */
+.input-error,
+.input-error-msg {
+  width: clamp(200px, 30vw, 400px);
+  border: 2px solid var(--lang-toggle-color);
+  padding: 0.3rem;
+}
+
+.input-error-msg {
+  resize: none;
+  height: 10rem;
+}
+
+/* Error message styling */
+.error-message {
+  background-color: var(--lang-toggle-color);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  margin: 0rem;
+}
+
+.error-p {
+  margin: 0rem;
+}
+
+.name-container,
+.email-container,
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+/* Spinner overlay for the loading animation */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Spinner animation */
+.spinner {
+  border: 0.3rem solid #f3f3f3;
+  border-top: 0.3rem solid #3498db;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Checkmark animation */
+.checkmark {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  background-color: green;
+  position: relative;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 2.2rem;
+  top: 1rem;
+  width: 1.5rem;
+  height: 3rem;
+  border: solid white;
+  border-width: 0 0.6rem 0.6rem 0;
+  transform: rotate(45deg);
+  animation: draw 0.6s ease-in-out;
+}
+
+.contact-links {
+  color: var(--link-color);
+}
+
+.icons {
+  width: 2rem;
+  height: 2rem;
+  padding: 0rem 1rem 0rem 1rem;
+  filter: var(--black-icons);
+}
+
+@keyframes draw {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 1.5rem;
+    height: 3rem;
+  }
+}
