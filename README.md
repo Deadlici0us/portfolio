@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# 🚀 My Personal Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains my personal portfolio, designed to run as a containerized service within a larger multi-repo infrastructure. It includes a custom Nginx configuration with SSL termination.
 
-## Available Scripts
+# 🌐 Live Demo
+Check out the live version here: https://anibal-flores.com/
 
-In the project directory, you can run:
+# 🏗️ Architecture
+This service is part of a broader self-hosted ecosystem. It is designed to be deployed alongside other repositories (e.g., API services, databases, or microservices) on a single VPS.
 
-### `npm start`
+# 🛠️ Built With
+- Frontend: **React**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Styling: **CSS**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Containerization: **Docker**
 
-### `npm test`
+- Orchestration: **Docker Compose**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Deployment: **Self-hosted on a VPS (Virtual Private Server)**
 
-### `npm run build`
+- Web Server: **Nginx as a Reverse Proxy** (with custom `nginx.conf`)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Security: **SSL/TLS** (Self-managed via cert directory)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 📂 Required Directory Structure
+For the container to run correctly with SSL, ensure the following files are present in the root:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+.
+├── nginx/
+│   ├── nginx.conf       # Custom Nginx server blocks
+│   └── cert/            # SSL Certificates (fullchain.pem, privkey.pem)
+├── Dockerfile           # Multi-stage production build
+├── docker-compose.yml   # Deployment config for this + linked services
+└── src/                 # Application source code
+```
 
-### `npm run eject`
+# 🚀 Deployment Integration
+Because this repo is part of a multi-repo setup, it is typically managed via a master `docker-compose` or an external network.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. SSL Setup
+Place your certificates in the `nginx/cert/` directory before building. These are ignored by `.gitignore` for security but are required for the Nginx mount.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 2. Standalone Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+docker-compose up -d --build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Integrated Deployment
 
-## Learn More
+If deploying with other repositories on the same VPS, ensure they share a common Docker network:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+# Example snippet from docker-compose.yml
+networks:
+  web-network:
+    external: true
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# ⚙️ Nginx Configuration
 
-### Code Splitting
+The internal Nginx server is configured to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Listen on Port 443 (HTTPS).
 
-### Analyzing the Bundle Size
+- Redirect Port 80 (HTTP) to HTTPS.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Reference certificates stored in /etc/nginx/cert/.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Serve optimized static assets.
