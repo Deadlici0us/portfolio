@@ -2,13 +2,13 @@
 
 This repository contains my personal portfolio, designed to run as a containerized service within a larger multi-repo infrastructure. It includes a custom Nginx configuration with SSL termination.
 
-# 🌐 Live Demo
+## 🌐 Live Demo
 Check out the live version here: https://anibal-flores.com/
 
-# 🏗️ Architecture
+## 🏗️ Architecture
 This service is part of a broader self-hosted ecosystem. It is designed to be deployed alongside other repositories (e.g., API services, databases, or microservices) on a single VPS.
 
-# 🛠️ Built With
+## 🛠️ Built With
 - Frontend: **React**
 
 - Styling: **CSS**
@@ -23,7 +23,7 @@ This service is part of a broader self-hosted ecosystem. It is designed to be de
 
 - Security: **SSL/TLS** (Self-managed via cert directory)
 
-# 📂 Required Directory Structure
+## 📂 Required Directory Structure
 For the container to run correctly with SSL, ensure the following files are present in the root:
 
 ```
@@ -36,7 +36,7 @@ For the container to run correctly with SSL, ensure the following files are pres
 └── src/                 # Application source code
 ```
 
-# 🚀 Deployment Integration
+## 🚀 Deployment Integration
 Because this repo is part of a multi-repo setup, it is typically managed via a master `docker-compose` or an external network.
 
 ### 1. SSL Setup
@@ -59,7 +59,7 @@ networks:
     external: true
 ```
 
-# ⚙️ Nginx Configuration
+## ⚙️ Nginx Configuration
 
 The internal Nginx server is configured to:
 
