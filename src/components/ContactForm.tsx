@@ -33,7 +33,7 @@ function ContactForm() {
   };
 
   const validateForm = () => {
-    let formErrors = { name: "", email: " ", message: "" };
+    let formErrors = { name: "", email: "", message: "" };
     let isValid = true;
 
     if (!formData.name.trim()) {

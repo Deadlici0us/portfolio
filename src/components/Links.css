@@ -13,6 +13,7 @@
   transition: transform 0.5s ease, background-color 0.5s ease;
   border: none;
   cursor: pointer;
+  filter: var(--black-icons2);
   animation: pulse 3s infinite;
 }
 

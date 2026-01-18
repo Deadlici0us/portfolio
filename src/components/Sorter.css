@@ -1,0 +1,64 @@
+.visual-section {
+  display: grid;
+  border-radius: 2rem;
+  margin-left: clamp(0px, (100vw - 320px) / 2, 9vw);
+  margin-right: clamp(0px, (100vw - 320px) / 2, 9vw);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--card-bg);
+  grid-template-columns: repeat(auto-fit, clamp(305px, 30vw, 400px));
+  overflow-x: auto;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: center;
+  align-items: baseline;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.speed-container,
+.dropdown-container,
+.current-container {
+  padding: 2rem 0 2rem 0;
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 2rem 0 2rem 0;
+}
+
+.sort-button {
+  color: var(--text-color);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--intro-gradient) 50%,
+    var(--intro-gradient2) 100%
+  );
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 9rem;
+  border-color: var(--button-border-color);
+}
+
+.sort-button:disabled,
+.sort-button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.selector {
+  padding: 0.3rem;
+}

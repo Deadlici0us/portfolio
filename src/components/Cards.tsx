@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./Cards.css";
 import { useTranslation } from "react-i18next";
 import githubIcon from "../assets/github.png";
+import { t } from "i18next";
 import wwwIcon from "../assets/www.png";
 import dockerIcon from "../assets/docker.png";
 import reactIcon from "../assets/react.png";
 import nodeIcon from "../assets/nodejs.png";
 import typescriptIcon from "../assets/typescript.png";
 import postgreIcon from "../assets/postgre.png";
-import { t } from "i18next";
 import useOnScreen from "./useOnScreen.tsx";
 
 interface CardProps {

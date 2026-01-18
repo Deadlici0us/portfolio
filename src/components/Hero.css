@@ -34,7 +34,7 @@
   font-size: clamp(1rem, 6vw, 2rem);
   text-align: right;
   color: var(--description-text-color);
-  font-family: Courier;
+  font-family: "Courier Prime", Courier, monospace;
   margin-right: 10vw;
 }
 
@@ -43,4 +43,8 @@
   text-align: left;
   margin-top: 10vh;
   margin-left: 10vw;
+}
+
+.animated-text {
+  color: var(--name-color);
 }

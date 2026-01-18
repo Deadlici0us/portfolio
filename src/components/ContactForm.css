@@ -21,10 +21,10 @@
   display: flex;
   margin: 2rem 0rem 2rem 0rem;
   height: 26rem;
-  width: fit-content;
+  width: auto;
   align-items: baseline;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .contact_form {
@@ -32,9 +32,9 @@
   margin: 2rem 0rem 2rem 0rem;
   height: 26rem;
   width: auto;
-  align-items: center;
+  align-items: baseline;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .h1 {
@@ -64,6 +64,7 @@
     var(--intro-gradient2) 100%
   );
   border-radius: 1rem;
+  border-color: var(--button-border-color);
 }
 /* Input fields with errors */
 .input-error,

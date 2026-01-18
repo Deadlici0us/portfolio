@@ -1,7 +1,10 @@
 {
   "welcome": "Welcome",
-  "hello": "Hello world, i am",
-  "description": "This is my portfolio.",
+  "hello": "Hello world",
+  "hello2": "I am ",
+  "Developer": "Developer",
+  "Anibal": "Anibal Flores",
+  "description": "I am a backend-oriented developer and this is my portfolio.",
   "formErrors": {
     "name": "Name is required",
     "email": "Email is required",
@@ -16,47 +19,31 @@
   },
   "cards": {
     "1": {
-      "image": "https://Image/image1.jpg",
-      "alt_img": "Card 1 image",
-      "title": "Card 1",
-      "description": "Card 1 description",
-      "www": "https://www1",
+      "image": "/JSONSortFlow.png",
+      "alt_img": "JSONSortFlow",
+      "title": "JSONSortFlow",
+      "description": "JSONSortFlow is a backend service with enpoints used to visualize sorting algorithms",
+      "www": "/sorter",
       "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject1",
+      "github": "https://github.com/Deadlici0us/JSONSortFlow",
       "githubtext": "Source code",
       "react": true,
       "node": true,
       "typescript": true,
-      "docker": true,
-      "postgre": true
-    },
-    "2": {
-      "image": "https://Image/image2.jpg",
-      "alt_img": "Card 2 image",
-      "title": "Card 2",
-      "description": "Card 2 description",
-      "www": "https://www2",
-      "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject2",
-      "githubtext": "Source code",
-      "react": true
-    },
-    "3": {
-      "image": "https://Image/image3.jpg",
-      "alt_img": "Card 3 image",
-      "title": "Card 3",
-      "description": "Card 3 description",
-      "www": "https://www3",
-      "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject3",
-      "githubtext": "Source code",
-      "node": true
+      "docker": true
     }
   },
   "loading": "Loading...",
+  "sorted": "Sorted",
+  "sorting": "Sorting...",
+  "start-sorting": "Start Sorting",
+  "JSF-title": "Select Sorting Algorithm:",
+  "speed-title": "Speed:",
+  "curr-array-title": "Current Array:",
+  "new-array-button": "Generate New Array",
   "contact": {
     "header": "Contact:",
-    "text": "This is my contact text",
+    "text": "Interested in learning more about my skills and experience? Let's connect.",
     "email": "contact@anibal-flores.com"
   },
   "footer": "© 2024 by Anibal Flores | Let's keep evolving 🛠️"

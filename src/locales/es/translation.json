@@ -1,7 +1,10 @@
 {
   "welcome": "Bienvenido",
-  "hello": "Hola mundo, yo soy",
-  "description": "Este es mi portfolio.",
+  "hello": "Hola mundo",
+  "hello2": "Yo soy ",
+  "Developer": "Desarrollador",
+  "Anibal": "Anibal Flores",
+  "description": "Soy un desarrollador orientado al backend y este es mi portfolio.",
   "formErrors": {
     "name": "Se debe ingresar el nombre",
     "email": "Se debe ingresar el correo",
@@ -16,47 +19,31 @@
   },
   "cards": {
     "1": {
-      "image": "https://Imagen/image1.jpg",
-      "alt_img": "Imagen de tarjeta 1",
-      "title": "Tarjeta 1",
-      "description": "Descripcion de tarjeta 1",
-      "www": "https://www1",
+      "image": "/JSONSortFlow.png",
+      "alt_img": "JSONSortFlow",
+      "title": "JSONSortFlow",
+      "description": "JSONSortFlow es un servicio backend con enpoints usados para visualizar algoritmos de ordenamiento",
+      "www": "/sorter",
       "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject1",
+      "github": "https://github.com/Deadlici0us/JSONSortFlow",
       "githubtext": "Código fuente",
       "react": true,
       "node": true,
       "typescript": true,
-      "docker": true,
-      "postgre": true
-    },
-    "2": {
-      "image": "https://Imagen/image2.jpg",
-      "alt_img": "Imagen de tarjeta 2",
-      "title": "Tarjeta 2",
-      "description": "Descripcion de tarjeta 2",
-      "www": "https://www2",
-      "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject2",
-      "githubtext": "Código fuente",
-      "react": true
-    },
-    "3": {
-      "image": "https://Imagen/image3.jpg",
-      "alt_img": "Imagen de tarjeta 3",
-      "title": "Tarjeta 3",
-      "description": "Descripcion de tarjeta 3",
-      "www": "https://www3",
-      "wwwtext": "Web",
-      "github": "https://github.com/yourusername/yourproject3",
-      "githubtext": "Código fuente",
-      "node": true
+      "docker": true
     }
   },
   "loading": "Cargando...",
+  "sorted": "Ordenado",
+  "sorting": "Ordenando...",
+  "start-sorting": "Comenzar ordenamiento",
+  "JSF-title": "Seleccionar algoritmo de ordenamiento:",
+  "speed-title": "Velocidad:",
+  "curr-array-title": "Matriz Actual:",
+  "new-array-button": "Generar Nueva Matriz",
   "contact": {
     "header": "Contacto:",
-    "text": "Este es el texto de contacto",
+    "text": "¿Interesado en saber más sobre mis habilidades y experiencia? Conectémonos.",
     "email": "contact@anibal-flores.com"
   },
   "footer": "© 2024 por Anibal Flores | Sigamos evolucionando 🛠️"

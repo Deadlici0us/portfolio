@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 :root {
   /* Light theme colors */
+  color-scheme: only light;
   --text-color: #333333;
-  --description-text-color: #310070;
+  --description-text-color: #3744fc;
+  --name-color: #ff693c;
   --navbar-bg: #ffffff;
   --background-color: #f7f7f7;
   --card-bg: #d8d8d8;
@@ -14,6 +17,7 @@
   --navbar-gradient: #7c7c7c;
   --link-color: #0000ee;
   --black-icons: invert(0%);
+  --button-border-color: #000000;
 }
 
 html {
@@ -29,6 +33,8 @@ html {
 body[data-theme="dark"] {
   /* Dark theme colors */
   --text-color: #e0e0e0;
+  --description-text-color: #a6acff;
+  --name-color: #ff815b;
   --navbar-bg: #181818;
   --background-color: #1e1e1e;
   --card-bg: #2c2c2c;
@@ -38,7 +44,9 @@ body[data-theme="dark"] {
   --intro-gradient2: #00837c80;
   --navbar-gradient: #181818;
   --link-color: #00ccff;
-  --black-icons: invert(100%);
+  --black-icons: invert(70%);
+  --black-icons2: invert(10%);
+  --button-border-color: #909090;
 }
 
 body {
@@ -46,7 +54,7 @@ body {
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: background-color var(--transition-duration);
+  transition: color var(--transition-duration);
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -55,6 +63,7 @@ body {
 }
 
 .app {
+  min-height: 100vh;
   background: linear-gradient(
     to bottom,
     var(--background-color) 40%,

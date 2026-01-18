@@ -8,9 +8,11 @@ function Hero() {
   return (
     <div className='hero' id='intro'>
       <p className='welcome'>{t("hello")}</p>
+
       <p>
         <span className='title'>
-          Anibal Flores.<span className='terminal-prompt'>_</span>
+          {t("hello2")}
+          <span className='animated-text'>{t("Anibal")}</span>
         </span>
       </p>
       <Links />
