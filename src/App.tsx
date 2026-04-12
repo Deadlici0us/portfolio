@@ -8,6 +8,7 @@ import Cards from "./components/Cards.tsx";
 import ContactForm from "./components/ContactForm.tsx";
 import Footer from "./components/Footer.tsx";
 import Sorter from "./components/Sorter.tsx";
+import Pathfinding from "./components/Pathfinding.tsx";
 import "./i18n.tsx";
 import { I18nextProvider } from "react-i18next";
 
@@ -49,6 +50,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Homepage />} />
               <Route path='/sorter' element={<Sorter />} />
+              <Route path='/pathfinding' element={<Pathfinding />} />
             </Routes>
             <Footer />
           </div>

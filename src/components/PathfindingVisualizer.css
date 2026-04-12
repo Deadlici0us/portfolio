@@ -1,0 +1,18 @@
+.grid-container {
+  user-select: none;
+  cursor: crosshair;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cell-explored {
+  animation: pop 0.3s ease-out;
+}
+
+.cell-path {
+  animation: pop 0.2s ease-in;
+  border: 1px solid #fbc02d;
+}
