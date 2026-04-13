@@ -67,10 +67,10 @@ const Pathfinding = () => {
   };
 
   const handleReset = () => {
+    setIsSearching(false);
+    setApiData(null);
     const newGrid = generator.generate();
     setMatrix(newGrid);
-    setApiData(null);
-    setIsSearching(false);
   };
 
   return (
@@ -81,7 +81,6 @@ const Pathfinding = () => {
         matrix={matrix}
         apiData={apiData}
         onComplete={() => setIsSearching(false)}
-        onCellClick={toggleObstacle}
       />
 
       <div className="controls-section">

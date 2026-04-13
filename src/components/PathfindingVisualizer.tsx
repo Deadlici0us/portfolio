@@ -5,10 +5,9 @@ interface Props {
   matrix: number[][];
   apiData: PathfindingResponse | null;
   onComplete: () => void;
-  onCellClick: (r: number, c: number) => void;
 }
 
-const PathfindingVisualizer = ({ matrix, apiData, onComplete, onCellClick }: Props) => {
+const PathfindingVisualizer = ({ matrix, apiData, onComplete }: Props) => {
   const [exploredShown, setExploredShown] = useState<Set<string>>(new Set());
   const [pathShown, setPathShown] = useState<Set<string>>(new Set());
 
@@ -34,18 +33,13 @@ const PathfindingVisualizer = ({ matrix, apiData, onComplete, onCellClick }: Pro
     }, 10); // Adjust speed here
 
     const animatePath = () => {
-      let j = 0;
-      const pathInterval = setInterval(() => {
-        if (j < apiData.result.length) {
-          const [x, y] = apiData.result[j];
-          setPathShown(prev => new Set(prev).add(`${x},${y}`));
-          j++;
-        } else {
-          clearInterval(pathInterval);
-          onComplete();
-        }
-      }, 30);
-    };
+      const newPath = new Set<string>();
+      apiData.result.forEach(([x, y]) => {
+        newPath.add(`${x},${y}`);
+      });
+      setPathShown(newPath);
+      onComplete();
+    };      
 
     return () => clearInterval(explorationInterval);
   }, [apiData]);
@@ -67,7 +61,6 @@ const PathfindingVisualizer = ({ matrix, apiData, onComplete, onCellClick }: Pro
             <div 
               key={coord} 
               className={`cell ${status}`} 
-              onClick={() => onCellClick(rIdx, cIdx)}
             />
           );
         })

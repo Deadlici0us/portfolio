@@ -16,7 +16,7 @@
 }
 
 .cell {
-  background-color: var(--card-bg);
+  background-color: #AAAAAA ;
   aspect-ratio: 1 / 1;
   transition: background-color 0.1s;
 }
