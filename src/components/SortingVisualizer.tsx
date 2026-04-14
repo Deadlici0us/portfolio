@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./SortingVisualizer.css";
+import React, { useState, useEffect } from 'react';
+import './SortingVisualizer.css';
 
 interface SortingVisualizerProps {
   initialArray: number[];
@@ -46,14 +46,15 @@ function SortingVisualizer({
   }, [currentStep, steps, indexes, speed, onSortingComplete]);
 
   return (
-    <div className='array-container'>
+    <div className="array-container">
       {array.map((value, index) => (
         <div key={index} className={`array-bar-container`}>
           <div
             className={`array-bar ${
-              highlightedIndexes.includes(index) ? "highlight" : ""
+              highlightedIndexes.includes(index) ? 'highlight' : ''
             }`}
-            style={{ height: `${value * 2}px` }}></div>
+            style={{ height: `${value * 2}px` }}
+          ></div>
         </div>
       ))}
     </div>

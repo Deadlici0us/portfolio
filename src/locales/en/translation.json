@@ -31,6 +31,20 @@
       "node": true,
       "typescript": true,
       "docker": true
+    },
+    "2": {
+      "image": "/Pathfinding.png",
+      "alt_img": "Pathfinding Visualizer",
+      "title": "Pathfinding Visualizer",
+      "description": "A visualizer for exploring different pathfinding algorithms",
+      "www": "/pathfinding",
+      "wwwtext": "Web",
+      "github": "https://github.com/Deadlici0us/JSONSortFlow",
+      "githubtext": "Source code",
+      "react": true,
+      "node": true,
+      "typescript": true,
+      "docker": true
     }
   },
   "loading": "Loading...",

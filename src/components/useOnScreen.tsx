@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from 'react';
 
 function useOnScreen(threshold = 0.1) {
   const [isIntersecting, setIntersecting] = useState(false);

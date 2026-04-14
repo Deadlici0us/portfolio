@@ -14,9 +14,9 @@ export class SortingApiServiceImpl implements SortingApiService {
 
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ numbers: array }),
       });
@@ -27,7 +27,7 @@ export class SortingApiServiceImpl implements SortingApiService {
 
       return response.json();
     } catch (error) {
-      console.error("Error fetching sorting data:", error);
+      console.error('Error fetching sorting data:', error);
       throw error;
     }
   }

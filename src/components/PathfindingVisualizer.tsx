@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { PathfindingResponse } from "./utils/PathfindingAPIService";
+import React, { useState, useEffect } from 'react';
+import { PathfindingResponse } from './utils/PathfindingAPIService';
 
 interface Props {
   matrix: number[][];
@@ -8,7 +8,12 @@ interface Props {
   onComplete: () => void;
 }
 
-const PathfindingVisualizer = ({ matrix, apiData, speed, onComplete }: Props) => {
+const PathfindingVisualizer = ({
+  matrix,
+  apiData,
+  speed,
+  onComplete,
+}: Props) => {
   const [exploredShown, setExploredShown] = useState<Set<string>>(new Set());
   const [pathShown, setPathShown] = useState<Set<string>>(new Set());
 
@@ -24,7 +29,7 @@ const PathfindingVisualizer = ({ matrix, apiData, speed, onComplete }: Props) =>
     const explorationInterval = setInterval(() => {
       if (i < apiData.explored.length) {
         const [x, y] = apiData.explored[i];
-        setExploredShown(prev => new Set(prev).add(`${x},${y}`));
+        setExploredShown((prev) => new Set(prev).add(`${x},${y}`));
         i++;
       } else {
         clearInterval(explorationInterval);
@@ -40,30 +45,25 @@ const PathfindingVisualizer = ({ matrix, apiData, speed, onComplete }: Props) =>
       });
       setPathShown(newPath);
       onComplete();
-    };      
+    };
 
     return () => clearInterval(explorationInterval);
   }, [apiData]);
 
   return (
     <div className="grid">
-      {matrix.map((row, rIdx) => 
+      {matrix.map((row, rIdx) =>
         row.map((cell, cIdx) => {
           const coord = `${cIdx},${rIdx}`; // API uses [x, y]
-          let status = "";
-          
-          if (cIdx === 0 && rIdx === 0) status = "cell-start";
-          else if (cIdx === 31 && rIdx === 31) status = "cell-end";
-          else if (cell === 1) status = "cell-obstacle";
-          else if (pathShown.has(coord)) status = "cell-path";
-          else if (exploredShown.has(coord)) status = "cell-explored";
+          let status = '';
 
-          return (
-            <div 
-              key={coord} 
-              className={`cell ${status}`} 
-            />
-          );
+          if (cIdx === 0 && rIdx === 0) status = 'cell-start';
+          else if (cIdx === 31 && rIdx === 31) status = 'cell-end';
+          else if (cell === 1) status = 'cell-obstacle';
+          else if (pathShown.has(coord)) status = 'cell-path';
+          else if (exploredShown.has(coord)) status = 'cell-explored';
+
+          return <div key={coord} className={`cell ${status}`} />;
         })
       )}
     </div>

@@ -1,22 +1,22 @@
-import React from "react";
-import "./Hero.css";
-import Links from "./Links.tsx";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import './Hero.css';
+import Links from './Links.tsx';
+import { useTranslation } from 'react-i18next';
 
 function Hero() {
   const { t } = useTranslation();
   return (
-    <div className='hero' id='intro'>
-      <p className='welcome'>{t("hello")}</p>
+    <div className="hero" id="intro">
+      <p className="welcome">{t('hello')}</p>
 
       <p>
-        <span className='title'>
-          {t("hello2")}
-          <span className='animated-text'>{t("Anibal")}</span>
+        <span className="title">
+          {t('hello2')}
+          <span className="animated-text">{t('Anibal')}</span>
         </span>
       </p>
       <Links />
-      <p className='description'>{t("description")}</p>
+      <p className="description">{t('description')}</p>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+module.exports = {
+  singleQuote: true,
+  trailingComma: "es5",
+  semi: true,
+  tabWidth: 2,
+  useTabs: false,
+  bracketSpacing: true,
+  arrowParens: "always",
+  endOfLine: "lf",
+};

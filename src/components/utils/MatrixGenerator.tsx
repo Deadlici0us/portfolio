@@ -3,7 +3,7 @@ export type Matrix = number[][];
 
 export class MatrixGenerator {
   static readonly SIZE = 32;
-  
+
   // Injected properties
   private start: Point;
   private end: Point;
@@ -35,7 +35,7 @@ export class MatrixGenerator {
 
     // 2. Generate path using instance start/end points
     const pathPoints = this.generateRandomPath(this.start, this.end);
-    
+
     pathPoints.forEach(([r, c]) => {
       matrix[r][c] = 0;
     });

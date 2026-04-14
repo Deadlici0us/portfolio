@@ -17,7 +17,7 @@ export interface PathfindingApiService {
 }
 
 export class PathfindingApiServiceImpl implements PathfindingApiService {
-  private readonly baseUrl = "https://api.anibal-flores.com";
+  private readonly baseUrl = 'https://api.anibal-flores.com';
 
   /**
    * Fetches pathfinding data from the local search API.
@@ -32,9 +32,9 @@ export class PathfindingApiServiceImpl implements PathfindingApiService {
 
     try {
       const response = await fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData),
       });
@@ -45,7 +45,7 @@ export class PathfindingApiServiceImpl implements PathfindingApiService {
 
       return (await response.json()) as PathfindingResponse;
     } catch (error) {
-      console.error("Error fetching pathfinding data:", error);
+      console.error('Error fetching pathfinding data:', error);
       throw error;
     }
   }
