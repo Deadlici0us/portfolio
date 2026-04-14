@@ -4,10 +4,11 @@ import { PathfindingResponse } from "./utils/PathfindingAPIService";
 interface Props {
   matrix: number[][];
   apiData: PathfindingResponse | null;
+  speed: number;
   onComplete: () => void;
 }
 
-const PathfindingVisualizer = ({ matrix, apiData, onComplete }: Props) => {
+const PathfindingVisualizer = ({ matrix, apiData, speed, onComplete }: Props) => {
   const [exploredShown, setExploredShown] = useState<Set<string>>(new Set());
   const [pathShown, setPathShown] = useState<Set<string>>(new Set());
 
@@ -30,7 +31,7 @@ const PathfindingVisualizer = ({ matrix, apiData, onComplete }: Props) => {
         // 2. Animate Final Path
         animatePath();
       }
-    }, 10); // Adjust speed here
+    }, speed); // Adjust speed here
 
     const animatePath = () => {
       const newPath = new Set<string>();

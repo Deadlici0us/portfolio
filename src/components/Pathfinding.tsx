@@ -2,11 +2,13 @@ import React, { useState, useEffect, useMemo } from "react";
 import PathfindingVisualizer from "./PathfindingVisualizer.tsx";
 import { PathfindingApiServiceImpl, PathfindingResponse } from "./utils/PathfindingAPIService.tsx";
 import { MatrixGenerator, Point } from "./utils/MatrixGenerator.tsx";
+import { useTranslation } from "react-i18next";
 import "./Pathfinding.css";
 
 const apiService = new PathfindingApiServiceImpl();
 
 const Pathfinding = () => {
+  const { t } = useTranslation();
   // 1. Define Start and End points as constants or state
   const START_NODE: Point = [0, 0];
   const END_NODE: Point = [31, 31];
@@ -15,6 +17,9 @@ const Pathfinding = () => {
   const [algorithm, setAlgorithm] = useState("bfs-search");
   const [isSearching, setIsSearching] = useState(false);
   const [apiData, setApiData] = useState<PathfindingResponse | null>(null);
+  const [speed, setSpeed] = useState<number>(1);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   // 2. Initialize the generator instance with our points
   // useMemo ensures we don't recreate the generator object on every render
@@ -31,6 +36,8 @@ const Pathfinding = () => {
   const handleStart = async () => {
     setIsSearching(true);
     setApiData(null);
+    setError(null);
+    setLoading(true);
 
     try {
       // 4. Pass the same points to the API service
@@ -40,30 +47,13 @@ const Pathfinding = () => {
         matrix: matrix
       });
       setApiData(response);
-    } catch (error) {
+    } catch (error:any) {
       console.error("Search failed", error);
+      setError(error.message);
       setIsSearching(false);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const toggleObstacle = (r: number, c: number) => {
-    if (isSearching) return;
-    
-    // Prevent toggling the start or end nodes into obstacles
-    if ((r === START_NODE[0] && c === START_NODE[1]) || 
-        (r === END_NODE[0] && c === END_NODE[1])) {
-      return;
-    }
-
-    const newGrid = matrix.map((row, rowIndex) => 
-      row.map((cell, colIndex) => {
-        if (rowIndex === r && colIndex === c) {
-          return cell === 0 ? 1 : 0;
-        }
-        return cell;
-      })
-    );
-    setMatrix(newGrid);
   };
 
   const handleReset = () => {
@@ -74,34 +64,58 @@ const Pathfinding = () => {
   };
 
   return (
-    <div className="pathfinder-container">
+    <div>
       <h1>Pathfinding Visualizer</h1>
-      
-      <PathfindingVisualizer 
-        matrix={matrix}
-        apiData={apiData}
-        onComplete={() => setIsSearching(false)}
-      />
 
-      <div className="controls-section">
-        <select value={algorithm} onChange={(e) => setAlgorithm(e.target.value)}>
+      <div className="visual-section">
+      <div className="options-container">
+        <div className='dropdown-container'>
+          <h4>{t("JPF-title")}</h4>
+        <select className="selector" value={algorithm} onChange={(e) => setAlgorithm(e.target.value)}>
           <option value="bfs-search">Breadth First Search</option>
           <option value="dfs-search">Depth First Search</option>
           <option value="astar-search">A* Search</option>
           <option value="dijkstra-search">Dijkstra's Algorithm</option>
         </select>
 
+        </div>
+
+      <div className='speed-container'>
+    {/* Speed control */}
+    <h4>{t("speed-title")}</h4>
+    <input
+    type='range'
+    id='speed'
+    name='speed'
+    min='1'
+    max='10'
+    value={speed}
+    onChange={(e) => setSpeed(Number(e.target.value))}
+    />
+    <span>{speed}ms</span>
+    </div>
+    <div className="button-container">
         <button 
+          className="sort-button"
           onClick={handleStart} 
           disabled={isSearching}
-          className="sort-button"
         >
-          {isSearching ? "Searching..." : "Find Path"}
+          {isSearching ? t("pathfinding") : t("start-pathfinding")}
         </button>
         
         <button onClick={handleReset} className="sort-button">
-          New Random Grid
+          {t("new-matrix-button")}
         </button>
+      </div>
+        {loading && <div>{t("loading")}</div>}
+        {error && <div>Error: {error}</div>}
+      
+    </div>
+      <PathfindingVisualizer 
+        matrix={matrix}
+        apiData={apiData}
+        onComplete={() => setIsSearching(false)}
+      />
       </div>
     </div>
   );

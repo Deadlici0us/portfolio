@@ -1,17 +1,10 @@
-.pathfinder-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(32, 1fr);
   gap: 1px;
   background-color: #444;
   border: 2px solid var(--button-border-color);
-  width: min(90vw, 600px);
+  width: min(90vw, 300px);
   aspect-ratio: 1 / 1;
 }
 
@@ -26,10 +19,3 @@
 .cell-end { background-color: #f44336; }   /* Red */
 .cell-explored { background-color: rgba(33, 150, 243, 0.4); } /* Light Blue */
 .cell-path { background-color: #ffeb3b; } /* Yellow */
-
-.controls-section {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: var(--card-bg);
-  border-radius: 1rem;
-}
