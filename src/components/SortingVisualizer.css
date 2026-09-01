@@ -1,32 +1,24 @@
 .array-container {
   display: flex;
-  width: auto;
+  align-items: flex-end;
   justify-content: center;
-  align-items: baseline;
-  height: 200px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  gap: 1px;
+  width: 100%;
+  height: 220px;
+  padding-block: var(--space-4);
+  overflow-x: auto;
 }
 
 .array-bar {
+  flex-shrink: 0;
   width: 2px;
-  background-color: var(--link-color);
-  margin: 0 1px 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  color: black;
-  font-weight: bold;
+  background-color: var(--bar-color);
+  border-radius: 1px 1px 0 0;
+  transition:
+    height 0.1s ease,
+    background-color 0.1s ease;
 }
 
-.array-bar-value {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.3rem; /* Space between bar and value */
-  font-size: 1rem; /* Adjust font size */
-  color: var(--text-color); /* Color for the value text */
-}
-
-.highlight {
-  background-color: orange;
+.array-bar.highlight {
+  background-color: var(--bar-highlight);
 }

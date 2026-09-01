@@ -46,12 +46,22 @@ function App() {
       <I18nextProvider>
         <Router>
           <div className="app">
+            <div className="bg-animation" aria-hidden="true">
+              <div className="bg-orb bg-orb-1"></div>
+              <div className="bg-orb bg-orb-2"></div>
+              <div className="bg-orb bg-orb-3"></div>
+            </div>
+            <a className="skip-link" href="#main-content">
+              Skip to main content
+            </a>
             <Navbar />
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/sorter" element={<Sorter />} />
-              <Route path="/pathfinding" element={<Pathfinding />} />
-            </Routes>
+            <main id="main-content" className="app-main" tabIndex={-1}>
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/sorter" element={<Sorter />} />
+                <Route path="/pathfinding" element={<Pathfinding />} />
+              </Routes>
+            </main>
             <Footer />
           </div>
         </Router>

@@ -1,21 +1,61 @@
 .grid {
+  justify-self: center;
   display: grid;
   grid-template-columns: repeat(32, 1fr);
   gap: 1px;
-  background-color: #444;
-  border: 2px solid var(--button-border-color);
-  width: min(90vw, 300px);
+  width: min(100%, 30rem);
   aspect-ratio: 1 / 1;
+  padding: var(--space-2);
+  background-color: var(--grid-gap-color);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .cell {
-  background-color: #AAAAAA ;
+  background-color: var(--cell-default);
   aspect-ratio: 1 / 1;
   transition: background-color 0.1s;
 }
 
-.cell-obstacle { background-color: #333; }
-.cell-start { background-color: #4caf50; } /* Green */
-.cell-end { background-color: #f44336; }   /* Red */
-.cell-explored { background-color: rgba(33, 150, 243, 0.4); } /* Light Blue */
-.cell-path { background-color: #ffeb3b; } /* Yellow */
+.cell-obstacle {
+  background-color: var(--cell-obstacle);
+}
+
+.cell-start {
+  background-color: var(--cell-start);
+}
+
+.cell-end {
+  background-color: var(--cell-end);
+}
+
+.cell-explored {
+  background-color: var(--cell-explored);
+}
+
+.cell-path {
+  background-color: var(--cell-path);
+}
+
+.grid-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+  border: 1px solid var(--color-border-strong);
+}

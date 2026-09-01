@@ -1,35 +1,34 @@
-/* ThemeToggle.css */
-
 .theme-toggle {
-  padding-right: 2.4rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  font: inherit;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
   cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
   animation: fade-down 0.5s 0.4s backwards;
 }
 
-.icon {
-  font-size: 1.5rem; /* Adjust icon size */
-  color: transparent; /* Initially hidden */
-  transition: color 0.3s; /* Smooth color transition */
-  position: absolute; /* Ensure the icons stack on top of each other */
+.theme-toggle:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent-border);
+  background-color: var(--color-accent-subtle);
 }
 
-.icon.light {
-  filter: brightness(80%); /* Reduces the brightness */
-  opacity: 0.7; /* Makes the icon less intense */
-  color: #000; /* Black color for light theme */
-  transition: opacity 0.3s ease, filter 0.3s ease;
+.theme-toggle:active {
+  transform: scale(0.94);
 }
 
-.icon.dark {
-  filter: brightness(80%); /* Reduces the brightness */
-  opacity: 0.7; /* Makes the icon less intense */
-  color: #ff0; /* Yellow color for dark theme */
-  transition: opacity 0.3s ease, filter 0.3s ease;
-}
-
-.icon:hover {
-  opacity: 1; /* Fully visible on hover */
-  filter: brightness(100%); /* Returns to full brightness on hover */
+.theme-toggle .icon {
+  font-size: 1.1rem;
 }

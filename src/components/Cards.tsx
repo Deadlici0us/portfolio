@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './Cards.css';
 import { useTranslation } from 'react-i18next';
 import { t } from 'i18next';
-import githubIcon from '../assets/github.png';
-import wwwIcon from '../assets/www.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGithub as faGithubBrand } from '@fortawesome/free-brands-svg-icons';
 import dockerIcon from '../assets/docker.png';
 import reactIcon from '../assets/react.png';
 import nodeIcon from '../assets/nodejs.png';
@@ -16,8 +17,8 @@ interface CardProps {
   alt_img: string;
   title: string;
   description: string;
-  www: string;
-  wwwtext: string;
+  www?: string;
+  wwwtext?: string;
   github: string;
   githubtext: string;
   react?: boolean;
@@ -25,6 +26,8 @@ interface CardProps {
   typescript?: boolean;
   docker?: boolean;
   postgre?: boolean;
+  masm?: boolean;
+  win64?: boolean;
 }
 
 function Card({
@@ -41,12 +44,14 @@ function Card({
   typescript,
   docker,
   postgre,
+  masm,
+  win64,
 }: CardProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
-    <div className="card">
+    <article className="card">
       <div className="card_body">
-        <div className="card_image">
+        <figure className="card_image">
           {!isLoaded && <div className="image-placeholder">{t('loading')}</div>}
           <img
             src={image}
@@ -54,67 +59,79 @@ function Card({
             className={`card_image ${isLoaded ? 'loaded' : 'hidden'}`}
             onLoad={() => setIsLoaded(true)}
           />
-        </div>
+        </figure>
         <h2 className="card_title">{title}</h2>
         <p className="card_description">{description}</p>
-        <div className="card_github">
-          <a
-            href={www}
-            className="link_style"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={wwwIcon} alt="Link" className="stack_icon" />
-            <p className="link_name">{wwwtext}</p>
-          </a>
+        <div className="card_links">
+          {www && wwwtext && (
+            <a
+              href={www}
+              className="link_style"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faGlobe} className="link_icon" />
+              <span>{wwwtext}</span>
+            </a>
+          )}
           <a
             href={github}
             className="link_style"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={githubIcon} alt="Github" className="stack_icon" />
-            <p className="link_name">{githubtext}</p>
+            <FontAwesomeIcon icon={faGithubBrand} className="link_icon" />
+            <span>{githubtext}</span>
           </a>
         </div>
-        <div className="card_stacks">
+        <ul className="card_stacks">
           {docker && (
-            <div className="stack_item">
+            <li className="stack_item">
               <img src={dockerIcon} alt="Docker" className="stack_icon" />
-              <p className="stack_name">Docker</p>
-            </div>
+              <span className="stack_name">Docker</span>
+            </li>
           )}
           {react && (
-            <div className="stack_item">
+            <li className="stack_item">
               <img src={reactIcon} alt="ReactJS" className="stack_icon" />
-              <p className="stack_name">ReactJS</p>
-            </div>
+              <span className="stack_name">ReactJS</span>
+            </li>
           )}
           {node && (
-            <div className="stack_item">
+            <li className="stack_item">
               <img src={nodeIcon} alt="Node.js" className="stack_icon" />
-              <p className="stack_name">Node.js</p>
-            </div>
+              <span className="stack_name">Node.js</span>
+            </li>
           )}
           {typescript && (
-            <div className="stack_item">
+            <li className="stack_item">
               <img
                 src={typescriptIcon}
-                alt="Typescript"
+                alt="TypeScript"
                 className="stack_icon"
               />
-              <p className="stack_name">Typescript</p>
-            </div>
+              <span className="stack_name">TypeScript</span>
+            </li>
           )}
           {postgre && (
-            <div className="stack_item">
-              <img src={postgreIcon} alt="Postgres" className="stack_icon" />
-              <p className="stack_name">Postgres </p>
-            </div>
+            <li className="stack_item">
+              <img src={postgreIcon} alt="PostgreSQL" className="stack_icon" />
+              <span className="stack_name">PostgreSQL</span>
+            </li>
           )}
-        </div>
+          {masm && (
+            <li className="stack_item">
+              <span className="stack_name">MASM</span>
+            </li>
+          )}
+          {win64 && (
+            <li className="stack_item">
+              <span className="stack_name">Win64</span>
+            </li>
+          )}
+        </ul>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -124,11 +141,15 @@ function Cards() {
   const { isIntersecting, ref } = useOnScreen(0.1);
 
   return (
-    <div ref={ref} className={`cards ${isIntersecting ? 'show' : ''}`}>
+    <section
+      ref={ref}
+      className={`cards ${isIntersecting ? 'show' : ''}`}
+      aria-label={t('cards-title')}
+    >
       {Object.keys(cardData).map((key, index) => (
         <Card key={index} {...cardData[key]} />
       ))}
-    </div>
+    </section>
   );
 }
 

@@ -1,14 +1,12 @@
 import React from 'react';
 import './Home.css';
-import homeIcon from '../assets/home.png';
 
 function Home() {
   return (
     <div className="home-stack">
-      <a href="/#intro" title="Home">
-        <p className="home-paragraph">
-          <img src={homeIcon} alt="Home" className="home-icon" />
-        </p>
+      <a href="/#intro" className="brand" aria-label="Anibal Flores — Home">
+        <span className="brand-mark">AF</span>
+        <span className="brand-dot">.</span>
       </a>
     </div>
   );

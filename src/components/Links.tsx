@@ -1,56 +1,51 @@
 import React from 'react';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import './Links.css';
-import githubIcon from '../assets/github2.png';
-import linkedinIcon from '../assets/linkedin.png';
-import emailIcon from '../assets/email.png';
+import { useTranslation } from 'react-i18next';
 
 function Links() {
+  const { t } = useTranslation();
+
   return (
-    <div className="links_panel">
-      <div>
+    <ul className="links_panel" aria-label={t('links-label')}>
+      <li>
         <a
           href="https://www.linkedin.com/in/anibal-f/"
-          title="Linkedin"
+          title="LinkedIn"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="link_icon_button"
         >
-          <p className="links_paragraph">
-            <img
-              src={linkedinIcon}
-              alt="linkedin"
-              className="links_icon icon_linkedin"
-            />
-          </p>
+          <FontAwesomeIcon icon={faLinkedinIn} className="links_icon" />
         </a>
-      </div>
-      <div>
+      </li>
+      <li>
         <a
           href="https://github.com/Deadlici0us"
-          title="Github"
+          title="GitHub"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="link_icon_button"
         >
-          <p className="links_paragraph">
-            <img
-              src={githubIcon}
-              alt="github"
-              className="links_icon icon_github"
-            />
-          </p>
+          <FontAwesomeIcon icon={faGithub} className="links_icon" />
         </a>
-      </div>
-      <div>
-        <a href="#contact" title="Send me an email">
-          <p className="links_paragraph">
-            <img
-              src={emailIcon}
-              alt="email"
-              className="links_icon icon_email"
-            />
-          </p>
+      </li>
+      <li>
+        <a
+          href="#contact"
+          title={t('nav.contact')}
+          aria-label={t('nav.contact')}
+          className="link_icon_button"
+        >
+          <FontAwesomeIcon icon={faEnvelope} className="links_icon" />
         </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 }
 

@@ -1,40 +1,60 @@
 .cards {
-  padding: 2rem;
-  margin: 2rem;
   display: grid;
-  gap: 2rem;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, clamp(260px, 30vw, 400px));
+  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  padding-block: var(--space-12);
   opacity: 0;
 }
 
 .cards.show {
   opacity: 1;
-  animation: fade-right 0.5s ease-out forwards;
+  animation: fade-right 0.6s ease-out forwards;
 }
 
 .card {
-  display: flexbox;
-  padding: 0.3rem, 0, 0.3rem, 0;
-  margin: 1.5rem, 0, 1.5rem, 0;
-  border-radius: 1rem;
-  border: 1px solid #393939;
-  background-color: var(--card-bg);
-  box-shadow: 0px 0.6rem 0.3rem rgba(0, 0, 0, 0.2);
+  display: flex;
   flex-direction: column;
-  text-align: center;
-  width: clamp(260px, 30vw, 400px);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
-  transition: transform 0.2s ease-in-out;
+  text-align: center;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent-border);
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: var(--space-6);
+}
+
+.card_image {
+  margin: 0 0 var(--space-4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-surface-2);
 }
 
 .card_image img {
   display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
 }
 
 .card_image img.loaded {
-  width: 100%;
-  height: auto;
   display: block;
 }
 
@@ -43,78 +63,91 @@
 }
 
 .image-placeholder {
-  background-color: #f0f0f0;
-  width: 100%;
-  height: 200px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #ccc;
-  font-size: 1.2rem;
-}
-
-.loaded + .image-placeholder {
-  display: none;
-}
-
-.card_body {
-  margin: 1rem;
-  flex-grow: 1;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
 }
 
 .card_title {
-  line-height: 1.4rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
 }
 
 .card_description {
-  line-height: 1.2rem;
+  margin: 0 0 var(--space-4);
+  flex-grow: 1;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card_github {
+.card_links {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-}
-
-.card_stacks {
-  border: 1px solid #393939;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  border-radius: 2rem;
-  flex-wrap: wrap;
-}
-
-.stack_icon {
-  padding: 0.5rem;
-  padding-bottom: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.stack_name {
-  margin: 1rem;
-  margin-bottom: 0.3rem;
-  margin-top: 0;
-}
-
-.link_name {
-  margin: 1rem;
-  margin-bottom: 0.3rem;
-  margin-top: 0;
-  color: var(--link-color);
-  text-decoration-color: var(--link-color);
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .link_style {
-  margin: 1rem;
-  margin-bottom: 0.3rem;
-  margin-top: 0;
-  color: var(--link-color);
-  text-decoration-color: var(--link-color);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.link_style:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-border);
+  text-underline-offset: 4px;
+}
+
+.link_icon {
+  font-size: 0.95rem;
+}
+
+.card_stacks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3);
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.stack_item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.25rem 0.7rem;
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.stack_icon {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+}
+
+.stack_name {
+  line-height: 1;
 }

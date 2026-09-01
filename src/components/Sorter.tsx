@@ -18,13 +18,11 @@ function Sorter() {
   const [speed, setSpeed] = useState<number>(1);
   const [sorted, setSorted] = useState(false);
 
-  // Fetch data from API
   useEffect(() => {
     const randomArray = ArrayGenerator.generateRandomArray();
     setArray(randomArray);
   }, []);
 
-  // Fetch sorting steps based on the algorithm
   const handleStartSorting = async () => {
     setSorted(false);
     setLoading(true);
@@ -59,14 +57,20 @@ function Sorter() {
   };
 
   return (
-    <div>
-      <h1>JSONSortFlow</h1>
-      <div className="visual-section">
+    <section className="visualizer-page">
+      <header className="visualizer-header">
+        <h1>JSONSortFlow</h1>
+        <p className="visualizer-subtitle">{t('sorter.subtitle')}</p>
+      </header>
+
+      <div className="visual-section panel">
         <div className="options-container">
-          <div className="dropdown-container">
-            <h4>{t('JSF-title')}</h4>
-            {/* Dropdown for selecting algorithm */}
+          <div className="option-group">
+            <label className="option-label" htmlFor="sorter-algorithm">
+              {t('JSF-title')}
+            </label>
             <select
+              id="sorter-algorithm"
               className="selector"
               value={algorithm}
               onChange={(e) => setAlgorithm(e.target.value)}
@@ -75,34 +79,35 @@ function Sorter() {
               <option value="bubble-sort">Bubble Sort</option>
               <option value="merge-sort">Merge Sort</option>
               <option value="quick-sort">Quick Sort</option>
-              {/* Add more sorting algorithms */}
             </select>
           </div>
-          <div className="speed-container">
-            {/* Speed control */}
-            <h4>{t('speed-title')}</h4>
-            <input
-              type="range"
-              id="speed"
-              name="speed"
-              min="1"
-              max="500"
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-            />
-            <span>{speed}ms</span>
-          </div>
-          <div className="current-container">
-            {/* Display current array */}
-            <h4>{t('curr-array-title')}</h4>
-            <div>[{array.join(', ')}]</div>
+
+          <div className="option-group">
+            <label className="option-label" htmlFor="sorter-speed">
+              {t('speed-title')}
+            </label>
+            <div className="speed-row">
+              <input
+                type="range"
+                id="sorter-speed"
+                name="speed"
+                min="1"
+                max="500"
+                value={speed}
+                onChange={(e) => setSpeed(Number(e.target.value))}
+              />
+              <output htmlFor="sorter-speed">{speed}ms</output>
+            </div>
           </div>
 
-          {/* Sorting and Array Generation Buttons */}
+          <div className="option-group">
+            <span className="option-label">{t('curr-array-title')}</span>
+            <code className="array-code">[{array.join(', ')}]</code>
+          </div>
 
-          <div className="button-container">
+          <div className="button-row">
             <button
-              className="sort-button"
+              className="btn btn-primary sort-button"
               onClick={handleStartSorting}
               disabled={loading || isSorting || sorted}
             >
@@ -113,19 +118,26 @@ function Sorter() {
                   : t('start-sorting')}
             </button>
             <button
-              className="sort-button"
+              className="btn btn-secondary sort-button"
               onClick={handleGenerateNewArray}
               disabled={loading || isSorting}
             >
               {t('new-array-button')}
             </button>
           </div>
-          {/* Error and Loading States */}
-          {loading && <div>{t('loading')}</div>}
-          {error && <div>Error: {error}</div>}
+
+          {loading && (
+            <p className="status-message" role="status">
+              {t('loading')}
+            </p>
+          )}
+          {error && (
+            <p className="status-message status-error" role="alert">
+              Error: {error}
+            </p>
+          )}
         </div>
 
-        {/* Visualizer */}
         <SortingVisualizer
           initialArray={array}
           steps={data.steps}
@@ -134,7 +146,7 @@ function Sorter() {
           onSortingComplete={handleSortingComplete}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

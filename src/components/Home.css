@@ -1,12 +1,21 @@
 .home-stack {
-  padding: 0.3rem 0rem 0rem 1rem;
+  display: flex;
+  align-items: center;
 }
 
-.home-icon {
-  width: 1.5rem; /* Adjust icon size */
-  height: 1.5rem; /* Adjust icon size */
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: var(--text-lg);
+  color: var(--color-text);
 }
 
-.home-paragraph {
-  margin: 0px;
+.brand:hover {
+  color: var(--color-accent);
+}
+
+.brand-dot {
+  color: var(--color-accent);
 }

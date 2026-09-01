@@ -1,28 +1,37 @@
 {
   "welcome": "Welcome",
-  "hello": "Hello world",
-  "hello2": "I am ",
   "Developer": "Developer",
   "Anibal": "Anibal Flores",
-  "description": "I am a backend-oriented developer and this is my portfolio.",
+  "description": "I design and build software — clean APIs, data pipelines, visualization tooling, and more — and I love making complex systems easier to understand.",
+  "nav": {
+    "contact": "Contact"
+  },
+  "theme": {
+    "toggle": "Switch to {{theme}} theme"
+  },
+  "language": {
+    "toggle": "Cambiar idioma"
+  },
+  "links-label": "Social links",
+  "cards-title": "Featured projects",
   "formErrors": {
-    "name": "Name is required",
-    "email": "Email is required",
-    "message": "Message is required",
-    "sending": "Failed to send email. Please try again."
+    "name": "Please enter your name",
+    "email": "Please enter a valid email address",
+    "message": "Please write a message",
+    "sending": "Failed to send the email. Please try again."
   },
   "form": {
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send"
+    "send": "Send message"
   },
   "cards": {
     "1": {
       "image": "/JSONSortFlow.png",
-      "alt_img": "JSONSortFlow",
+      "alt_img": "Screenshot of the JSONSortFlow sorting visualizer",
       "title": "JSONSortFlow",
-      "description": "JSONSortFlow is a backend service with enpoints used to visualize sorting algorithms",
+      "description": "A backend service that turns requests into live, step-by-step visualizations of sorting algorithms — Bubble, Merge, and Quick Sort.",
       "www": "/sorter",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -34,9 +43,9 @@
     },
     "2": {
       "image": "/Pathfinding.png",
-      "alt_img": "Pathfinding Visualizer",
+      "alt_img": "Screenshot of the Pathfinding Visualizer",
       "title": "Pathfinding Visualizer",
-      "description": "A visualizer for exploring different pathfinding algorithms",
+      "description": "An interactive visualizer for exploring how search algorithms — A*, BFS, DFS, and Dijkstra — find their way through a maze of obstacles.",
       "www": "/pathfinding",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -45,24 +54,50 @@
       "node": true,
       "typescript": true,
       "docker": true
+    },
+    "3": {
+      "image": "/httpdlite.svg",
+      "alt_img": "Terminal-style placeholder for the Win64-httpdLite HTTP server",
+      "title": "Win64-httpdLite",
+      "description": "A minimal HTTP/1.1 server written from scratch in x86-64 assembly (MASM) for Windows — no framework, just Winsock and raw socket handling.",
+      "github": "https://github.com/Deadlici0us/Win64-httpdLite",
+      "githubtext": "Source code",
+      "masm": true,
+      "win64": true
+    },
+    "4": {
+      "image": "/echod.svg",
+      "alt_img": "Terminal-style placeholder for the Win64-echod echo server",
+      "title": "Win64-echod",
+      "description": "A tiny TCP echo server implemented in x86-64 assembly (MASM) on Windows — a deep dive into low-level networking with Winsock.",
+      "github": "https://github.com/Deadlici0us/Win64-echod",
+      "githubtext": "Source code",
+      "masm": true,
+      "win64": true
     }
   },
   "loading": "Loading...",
   "sorted": "Sorted",
   "sorting": "Sorting...",
-  "pathfinding": "Pathfinding...",
-  "start-sorting": "Start Sorting",
-  "start-pathfinding": "Start Pathfinding",
-  "JSF-title": "Select Sorting Algorithm:",
-  "JPF-title": "Select Pathfinding Algorithm:",
-  "speed-title": "Speed:",
-  "curr-array-title": "Current Array:",
-  "new-array-button": "Generate New Array",
-  "new-matrix-button": "Generate New Matrix",
+  "pathfinding": "Searching...",
+  "start-sorting": "Sort it",
+  "start-pathfinding": "Find the path",
+  "JSF-title": "Algorithm",
+  "JPF-title": "Algorithm",
+  "speed-title": "Speed",
+  "curr-array-title": "Array",
+  "new-array-button": "New array",
+  "new-matrix-button": "New grid",
+  "sorter": {
+    "subtitle": "Watch sorting algorithms do their thing, one swap at a time."
+  },
+  "pathfinding": {
+    "subtitle": "Explore how search algorithms navigate a maze, step by step."
+  },
   "contact": {
-    "header": "Contact:",
-    "text": "Interested in learning more about my skills and experience? Let's connect.",
+    "header": "Let's connect",
+    "text": "Curious about my work or have a project in mind? I'd love to hear from you.",
     "email": "contact@anibal-flores.com"
   },
-  "footer": "© 2024 by Anibal Flores | Let's keep evolving 🛠️"
+  "footer": "© {{year}} Anibal Flores · Let's keep evolving"
 }

@@ -1,16 +1,29 @@
 .navbar {
   position: sticky;
-  top: 0px;
-  z-index: 1000;
-  border-radius: 1rem;
+  top: 0;
+  z-index: var(--z-nav);
   display: flex;
-  align-content: center;
   align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
-  background-color: var(--navbar-bg);
-  transition: background-color var(--transition-duration);
+  gap: var(--space-4);
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+  min-height: 4rem;
+  background-color: var(--color-navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
   animation: fade-down 0.5s 0.4s backwards;
-  background: linear-gradient(to bottom, transparent, var(--navbar-gradient));
+}
+
+.navbar-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
 }

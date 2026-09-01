@@ -6,17 +6,17 @@ import ThemeToggle from './ThemeToggle.tsx';
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div>
+    <nav className="navbar" aria-label="Primary">
+      <div className="navbar-brand">
         <Home />
       </div>
-      <div>
+
+      <div className="navbar-actions">
         <LanguageToggle />
-      </div>
-      <div>
         <ThemeToggle />
       </div>
     </nav>
   );
 }
+
 export default Navbar;

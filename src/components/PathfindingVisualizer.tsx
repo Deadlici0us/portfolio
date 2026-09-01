@@ -48,7 +48,7 @@ const PathfindingVisualizer = ({
     };
 
     return () => clearInterval(explorationInterval);
-  }, [apiData]);
+  }, [apiData, onComplete, speed]);
 
   return (
     <div className="grid">

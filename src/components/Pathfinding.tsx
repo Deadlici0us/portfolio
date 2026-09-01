@@ -10,11 +10,11 @@ import './Pathfinding.css';
 
 const apiService = new PathfindingApiServiceImpl();
 
+const START_NODE: Point = [0, 0];
+const END_NODE: Point = [31, 31];
+
 const Pathfinding = () => {
   const { t } = useTranslation();
-  // 1. Define Start and End points as constants or state
-  const START_NODE: Point = [0, 0];
-  const END_NODE: Point = [31, 31];
 
   const [matrix, setMatrix] = useState<number[][]>([]);
   const [algorithm, setAlgorithm] = useState('astar-search');
@@ -24,14 +24,13 @@ const Pathfinding = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // 2. Initialize the generator instance with our points
-  // useMemo ensures we don't recreate the generator object on every render
   const generator = useMemo(
     () => new MatrixGenerator(START_NODE, END_NODE, 0.3),
     []
   );
 
-  // 3. Use the generator to create the initial grid
+  const handleComplete = useMemo(() => () => setIsSearching(false), []);
+
   useEffect(() => {
     const newGrid = generator.generate();
     setMatrix(newGrid);
@@ -44,7 +43,6 @@ const Pathfinding = () => {
     setLoading(true);
 
     try {
-      // 4. Pass the same points to the API service
       const response = await apiService.fetchPath(algorithm, {
         start: START_NODE,
         end: END_NODE,
@@ -68,14 +66,20 @@ const Pathfinding = () => {
   };
 
   return (
-    <div>
-      <h1>Pathfinding Visualizer</h1>
+    <section className="visualizer-page">
+      <header className="visualizer-header">
+        <h1>Pathfinding Visualizer</h1>
+        <p className="visualizer-subtitle">{t('pathfinding.subtitle')}</p>
+      </header>
 
-      <div className="visual-section">
+      <div className="visual-section panel">
         <div className="options-container">
-          <div className="dropdown-container">
-            <h4>{t('JPF-title')}</h4>
+          <div className="option-group">
+            <label className="option-label" htmlFor="pf-algorithm">
+              {t('JPF-title')}
+            </label>
             <select
+              id="pf-algorithm"
               className="selector"
               value={algorithm}
               onChange={(e) => setAlgorithm(e.target.value)}
@@ -87,43 +91,83 @@ const Pathfinding = () => {
             </select>
           </div>
 
-          <div className="speed-container">
-            {/* Speed control */}
-            <h4>{t('speed-title')}</h4>
-            <input
-              type="range"
-              id="speed"
-              name="speed"
-              min="1"
-              max="10"
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-            />
-            <span>{speed}ms</span>
+          <div className="option-group">
+            <label className="option-label" htmlFor="pf-speed">
+              {t('speed-title')}
+            </label>
+            <div className="speed-row">
+              <input
+                type="range"
+                id="pf-speed"
+                name="speed"
+                min="1"
+                max="10"
+                value={speed}
+                onChange={(e) => setSpeed(Number(e.target.value))}
+              />
+              <output htmlFor="pf-speed">{speed}ms</output>
+            </div>
           </div>
-          <div className="button-container">
+
+          <div className="grid-legend" aria-hidden="true">
+            <span className="legend-item">
+              <i className="legend-swatch cell-start" />
+              Start
+            </span>
+            <span className="legend-item">
+              <i className="legend-swatch cell-end" />
+              End
+            </span>
+            <span className="legend-item">
+              <i className="legend-swatch cell-obstacle" />
+              Wall
+            </span>
+            <span className="legend-item">
+              <i className="legend-swatch cell-explored" />
+              Explored
+            </span>
+            <span className="legend-item">
+              <i className="legend-swatch cell-path" />
+              Path
+            </span>
+          </div>
+
+          <div className="button-row">
             <button
-              className="sort-button"
+              className="btn btn-primary sort-button"
               onClick={handleStart}
               disabled={isSearching}
             >
               {isSearching ? t('pathfinding') : t('start-pathfinding')}
             </button>
 
-            <button onClick={handleReset} className="sort-button">
+            <button
+              onClick={handleReset}
+              className="btn btn-secondary sort-button"
+            >
               {t('new-matrix-button')}
             </button>
           </div>
-          {loading && <div>{t('loading')}</div>}
-          {error && <div>Error: {error}</div>}
+
+          {loading && (
+            <p className="status-message" role="status">
+              {t('loading')}
+            </p>
+          )}
+          {error && (
+            <p className="status-message status-error" role="alert">
+              Error: {error}
+            </p>
+          )}
         </div>
         <PathfindingVisualizer
           matrix={matrix}
           apiData={apiData}
-          onComplete={() => setIsSearching(false)}
+          speed={speed}
+          onComplete={handleComplete}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

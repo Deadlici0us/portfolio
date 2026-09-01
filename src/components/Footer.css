@@ -1,11 +1,12 @@
 .footer {
-  padding: 2rem;
-  padding-bottom: 0rem;
-  margin-bottom: 0rem;
+  padding-block: var(--space-8);
   text-align: center;
-  display: flex;
-  justify-content: space-evenly;
-  height: 10rem;
-  flex-direction: column;
-  animation: fade 0.5s 0s backwards;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.footer p {
+  margin: 0;
 }

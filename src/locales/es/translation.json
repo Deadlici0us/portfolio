@@ -1,28 +1,37 @@
 {
   "welcome": "Bienvenido",
-  "hello": "Hola mundo",
-  "hello2": "Yo soy ",
   "Developer": "Desarrollador",
   "Anibal": "Anibal Flores",
-  "description": "Soy un desarrollador orientado al backend y este es mi portfolio.",
+  "description": "Diseño y construyo software — APIs limpias, pipelines de datos, herramientas de visualización y más — y me encanta hacer que los sistemas complejos sean más fáciles de entender.",
+  "nav": {
+    "contact": "Contacto"
+  },
+  "theme": {
+    "toggle": "Cambiar al tema {{theme}}"
+  },
+  "language": {
+    "toggle": "Toggle language"
+  },
+  "links-label": "Mis redes",
+  "cards-title": "Proyectos destacados",
   "formErrors": {
-    "name": "Se debe ingresar el nombre",
-    "email": "Se debe ingresar el correo",
-    "message": "Se debe ingresar el mensaje",
-    "sending": "Error al enviar el correo. Por favor, intente nuevamente"
+    "name": "Por favor ingresa tu nombre",
+    "email": "Por favor ingresa un correo válido",
+    "message": "Por favor escribe un mensaje",
+    "sending": "Error al enviar el correo. Por favor, inténtalo de nuevo."
   },
   "form": {
     "name": "Nombre",
     "email": "Correo",
     "message": "Mensaje",
-    "send": "Enviar"
+    "send": "Enviar mensaje"
   },
   "cards": {
     "1": {
       "image": "/JSONSortFlow.png",
-      "alt_img": "JSONSortFlow",
+      "alt_img": "Captura del visualizador de ordenamiento JSONSortFlow",
       "title": "JSONSortFlow",
-      "description": "JSONSortFlow es un servicio backend con enpoints usados para visualizar algoritmos de ordenamiento",
+      "description": "Un servicio backend que convierte peticiones en visualizaciones en vivo, paso a paso, de algoritmos de ordenamiento — Burbuja, Merge y Quick Sort.",
       "www": "/sorter",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -34,9 +43,9 @@
     },
     "2": {
       "image": "/Pathfinding.png",
-      "alt_img": "Pathfinding",
-      "title": "Pathfinding",
-      "description": "Pathfinding es un servicio backend con enpoints usados para visualizar algoritmos de pathfinding",
+      "alt_img": "Captura del visualizador de pathfinding",
+      "title": "Pathfinding Visualizer",
+      "description": "Un visualizador interactivo para explorar cómo los algoritmos de búsqueda — A*, BFS, DFS y Dijkstra — encuentran su camino a través de un laberinto de obstáculos.",
       "www": "/pathfinding",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -45,24 +54,50 @@
       "node": true,
       "typescript": true,
       "docker": true
+    },
+    "3": {
+      "image": "/httpdlite.svg",
+      "alt_img": "Marcador de posición estilo terminal para el servidor HTTP Win64-httpdLite",
+      "title": "Win64-httpdLite",
+      "description": "Un servidor HTTP/1.1 mínimo escrito desde cero en ensamblador x86-64 (MASM) para Windows — sin frameworks, solo Winsock y manejo de sockets en bruto.",
+      "github": "https://github.com/Deadlici0us/Win64-httpdLite",
+      "githubtext": "Código fuente",
+      "masm": true,
+      "win64": true
+    },
+    "4": {
+      "image": "/echod.svg",
+      "alt_img": "Marcador de posición estilo terminal para el servidor echo Win64-echod",
+      "title": "Win64-echod",
+      "description": "Un pequeño servidor TCP echo implementado en ensamblador x86-64 (MASM) en Windows — una inmersión en redes de bajo nivel con Winsock.",
+      "github": "https://github.com/Deadlici0us/Win64-echod",
+      "githubtext": "Código fuente",
+      "masm": true,
+      "win64": true
     }
   },
   "loading": "Cargando...",
   "sorted": "Ordenado",
   "sorting": "Ordenando...",
-  "pathfinding": "Buscando camino...",
-  "start-sorting": "Comenzar Ordenamiento",
-  "start-pathfinding": "Comenzar Pathfinding",
-  "JSF-title": "Seleccionar Algoritmo de Ordenamiento:",
-  "JPF-title": "Seleccionar Algoritmo de Pathfinding:",
-  "speed-title": "Velocidad:",
-  "curr-array-title": "Matriz Actual:",
-  "new-array-button": "Generar Nueva Matriz",
-  "new-matrix-button": "Generar Nueva Matriz",
+  "pathfinding": "Buscando...",
+  "start-sorting": "Ordenar",
+  "start-pathfinding": "Buscar ruta",
+  "JSF-title": "Algoritmo",
+  "JPF-title": "Algoritmo",
+  "speed-title": "Velocidad",
+  "curr-array-title": "Arreglo",
+  "new-array-button": "Nuevo arreglo",
+  "new-matrix-button": "Nueva cuadrícula",
+  "sorter": {
+    "subtitle": "Observa los algoritmos de ordenamiento en acción, intercambio por intercambio."
+  },
+  "pathfinding": {
+    "subtitle": "Explora cómo los algoritmos de búsqueda recorren un laberinto, paso a paso."
+  },
   "contact": {
-    "header": "Contacto:",
-    "text": "¿Interesado en saber más sobre mis habilidades y experiencia? Conectémonos.",
+    "header": "Hablemos",
+    "text": "¿Te da curiosidad mi trabajo o tienes un proyecto en mente? Me encantaría saber de ti.",
     "email": "contact@anibal-flores.com"
   },
-  "footer": "© 2024 por Anibal Flores | Sigamos evolucionando 🛠️"
+  "footer": "© {{year}} Anibal Flores · Sigamos evolucionando"
 }
