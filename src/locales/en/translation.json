@@ -31,7 +31,7 @@
       "image": "/JSONSortFlow.png",
       "alt_img": "Screenshot of the JSONSortFlow sorting visualizer",
       "title": "JSONSortFlow",
-      "description": "A backend service that turns requests into live, step-by-step visualizations of sorting algorithms — Bubble, Merge, and Quick Sort.",
+      "description": "The backend API I built behind this visualizer — containerized endpoints that stream step-by-step Bubble, Merge, and Quick Sort operations to the frontend.",
       "www": "/sorter",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -45,7 +45,7 @@
       "image": "/Pathfinding.png",
       "alt_img": "Screenshot of the Pathfinding Visualizer",
       "title": "Pathfinding Visualizer",
-      "description": "An interactive visualizer for exploring how search algorithms — A*, BFS, DFS, and Dijkstra — find their way through a maze of obstacles.",
+      "description": "The backend API I built behind this visualizer — endpoints for A*, BFS, DFS, and Dijkstra that stream each search step to an interactive maze grid.",
       "www": "/pathfinding",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -74,6 +74,19 @@
       "githubtext": "Source code",
       "masm": true,
       "win64": true
+    },
+    "5": {
+      "image": "/quadtree-collisions.gif",
+      "alt_img": "Quadtree collision visualization showing spatial partitioning",
+      "title": "Quadtree Collision",
+      "description": "Rust + WebAssembly (wasm-bindgen, wasm-pack) with vanilla JavaScript + Canvas2D — no frameworks or bundlers. Dynamic QuadTree accelerates boids flocking and elastic collisions for up to 10k particles at 60 FPS via zero-copy WASM memory.",
+      "www": "https://deadlici0us.github.io/Quadtree-Collision/",
+      "wwwtext": "Live demo",
+      "github": "https://github.com/Deadlici0us/Quadtree-Collision",
+      "githubtext": "Source code",
+      "javascript": true,
+      "rust": true,
+      "wasm": true
     }
   },
   "loading": "Loading...",

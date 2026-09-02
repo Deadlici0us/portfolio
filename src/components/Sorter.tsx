@@ -9,7 +9,10 @@ const sortingApiService = new SortingApiServiceImpl();
 
 function Sorter() {
   const { t } = useTranslation();
-  const [data, setData] = useState({ steps: [], indexes: [] });
+  const [data, setData] = useState<{ steps: number[][]; indexes: number[][] }>({
+    steps: [],
+    indexes: [],
+  });
   const [array, setArray] = useState<number[]>([]);
   const [algorithm, setAlgorithm] = useState<string>('bubble-sort');
   const [error, setError] = useState<string | null>(null);
@@ -31,12 +34,23 @@ function Sorter() {
 
     try {
       const result = await sortingApiService.fetchSortedData(algorithm, array);
+      // Endpoint returns JSON object { steps, indexes } — handle as object directly.
+      const steps = Array.isArray(result.steps) ? result.steps : [];
+      const indexes = Array.isArray(result.indexes) ? result.indexes : [];
       setData({
-        steps: result.steps,
-        indexes: result.indexes,
+        steps,
+        indexes,
       });
     } catch (err: any) {
-      setError(err.message);
+      const message =
+        err instanceof Error
+          ? err.message
+          : typeof err === 'string'
+            ? err
+            : err?.message
+              ? String(err.message)
+              : JSON.stringify(err);
+      setError(message);
       setIsSorting(false);
     } finally {
       setLoading(false);

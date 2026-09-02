@@ -31,7 +31,7 @@
       "image": "/JSONSortFlow.png",
       "alt_img": "Captura del visualizador de ordenamiento JSONSortFlow",
       "title": "JSONSortFlow",
-      "description": "Un servicio backend que convierte peticiones en visualizaciones en vivo, paso a paso, de algoritmos de ordenamiento — Burbuja, Merge y Quick Sort.",
+      "description": "El API backend que construí detrás de este visualizador — endpoints en contenedor que transmiten paso a paso las operaciones de Burbuja, Merge y Quick Sort al frontend.",
       "www": "/sorter",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -45,7 +45,7 @@
       "image": "/Pathfinding.png",
       "alt_img": "Captura del visualizador de pathfinding",
       "title": "Pathfinding Visualizer",
-      "description": "Un visualizador interactivo para explorar cómo los algoritmos de búsqueda — A*, BFS, DFS y Dijkstra — encuentran su camino a través de un laberinto de obstáculos.",
+      "description": "El API backend que construí detrás de este visualizador — endpoints para A*, BFS, DFS y Dijkstra que transmiten cada paso de la búsqueda a una grilla interactiva.",
       "www": "/pathfinding",
       "wwwtext": "Web",
       "github": "https://github.com/Deadlici0us/JSONSortFlow",
@@ -74,6 +74,19 @@
       "githubtext": "Código fuente",
       "masm": true,
       "win64": true
+    },
+    "5": {
+      "image": "/quadtree-collisions.gif",
+      "alt_img": "Visualización de colisiones con quadtree mostrando partición espacial",
+      "title": "Quadtree Collision",
+      "description": "Rust + WebAssembly (wasm-bindgen, wasm-pack) con JavaScript vanilla + Canvas2D — sin frameworks ni bundlers. QuadTree dinámico acelera flocking (boids) y colisiones elásticas hasta 10k partículas a 60 FPS con memoria WASM zero-copy.",
+      "www": "https://deadlici0us.github.io/Quadtree-Collision/",
+      "wwwtext": "Demo en vivo",
+      "github": "https://github.com/Deadlici0us/Quadtree-Collision",
+      "githubtext": "Código fuente",
+      "javascript": true,
+      "rust": true,
+      "wasm": true
     }
   },
   "loading": "Cargando...",

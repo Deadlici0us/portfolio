@@ -48,10 +48,19 @@ const Pathfinding = () => {
         end: END_NODE,
         matrix: matrix,
       });
+      // Endpoint returns JSON object { explored, result } — handle as object directly.
       setApiData(response);
     } catch (error: any) {
       console.error('Search failed', error);
-      setError(error.message);
+      const message =
+        error instanceof Error
+          ? error.message
+          : typeof error === 'string'
+            ? error
+            : error?.message
+              ? String(error.message)
+              : JSON.stringify(error);
+      setError(message);
       setIsSearching(false);
     } finally {
       setLoading(false);

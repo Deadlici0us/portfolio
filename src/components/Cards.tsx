@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub as faGithubBrand } from '@fortawesome/free-brands-svg-icons';
 import dockerIcon from '../assets/docker.png';
+import javascriptIcon from '../assets/javascript.png';
 import reactIcon from '../assets/react.png';
 import nodeIcon from '../assets/nodejs.png';
-import typescriptIcon from '../assets/typescript.png';
 import postgreIcon from '../assets/postgre.png';
+import rustIcon from '../assets/rust.png';
+import typescriptIcon from '../assets/typescript.png';
+import wasmIcon from '../assets/wasm.png';
 import useOnScreen from './useOnScreen.tsx';
 
 interface CardProps {
@@ -21,11 +24,14 @@ interface CardProps {
   wwwtext?: string;
   github: string;
   githubtext: string;
-  react?: boolean;
-  node?: boolean;
-  typescript?: boolean;
   docker?: boolean;
+  javascript?: boolean;
+  node?: boolean;
   postgre?: boolean;
+  react?: boolean;
+  rust?: boolean;
+  typescript?: boolean;
+  wasm?: boolean;
   masm?: boolean;
   win64?: boolean;
 }
@@ -39,11 +45,14 @@ function Card({
   wwwtext,
   github,
   githubtext,
-  react,
-  node,
-  typescript,
   docker,
+  javascript,
+  node,
   postgre,
+  react,
+  rust,
+  typescript,
+  wasm,
   masm,
   win64,
 }: CardProps) {
@@ -91,16 +100,34 @@ function Card({
               <span className="stack_name">Docker</span>
             </li>
           )}
-          {react && (
+          {javascript && (
             <li className="stack_item">
-              <img src={reactIcon} alt="ReactJS" className="stack_icon" />
-              <span className="stack_name">ReactJS</span>
+              <img src={javascriptIcon} alt="JavaScript" className="stack_icon" />
+              <span className="stack_name">JavaScript</span>
             </li>
           )}
           {node && (
             <li className="stack_item">
               <img src={nodeIcon} alt="Node.js" className="stack_icon" />
               <span className="stack_name">Node.js</span>
+            </li>
+          )}
+          {postgre && (
+            <li className="stack_item">
+              <img src={postgreIcon} alt="PostgreSQL" className="stack_icon" />
+              <span className="stack_name">PostgreSQL</span>
+            </li>
+          )}
+          {react && (
+            <li className="stack_item">
+              <img src={reactIcon} alt="ReactJS" className="stack_icon" />
+              <span className="stack_name">ReactJS</span>
+            </li>
+          )}
+          {rust && (
+            <li className="stack_item">
+              <img src={rustIcon} alt="Rust" className="stack_icon" />
+              <span className="stack_name">Rust</span>
             </li>
           )}
           {typescript && (
@@ -113,10 +140,10 @@ function Card({
               <span className="stack_name">TypeScript</span>
             </li>
           )}
-          {postgre && (
+          {wasm && (
             <li className="stack_item">
-              <img src={postgreIcon} alt="PostgreSQL" className="stack_icon" />
-              <span className="stack_name">PostgreSQL</span>
+              <img src={wasmIcon} alt="WebAssembly" className="stack_icon" />
+              <span className="stack_name">WebAssembly</span>
             </li>
           )}
           {masm && (
