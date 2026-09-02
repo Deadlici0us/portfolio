@@ -28,7 +28,7 @@
   },
   "cards": {
     "1": {
-      "image": "/JSONSortFlow.png",
+      "image": "/JSONSortFlow.gif",
       "alt_img": "Screenshot of the JSONSortFlow sorting visualizer",
       "title": "JSONSortFlow",
       "description": "The backend API I built behind this visualizer — containerized endpoints that stream step-by-step Bubble, Merge, and Quick Sort operations to the frontend.",
@@ -42,7 +42,7 @@
       "docker": true
     },
     "2": {
-      "image": "/Pathfinding.png",
+      "image": "/Pathfinding.gif",
       "alt_img": "Screenshot of the Pathfinding Visualizer",
       "title": "Pathfinding Visualizer",
       "description": "The backend API I built behind this visualizer — endpoints for A*, BFS, DFS, and Dijkstra that stream each search step to an interactive maze grid.",
@@ -59,7 +59,7 @@
       "image": "/httpdlite.svg",
       "alt_img": "Terminal-style placeholder for the Win64-httpdLite HTTP server",
       "title": "Win64-httpdLite",
-      "description": "A minimal HTTP/1.1 server written from scratch in x86-64 assembly (MASM) for Windows — no framework, just Winsock and raw socket handling.",
+      "description": "A minimal HTTP/1.1 server written from scratch in x86-64 assembly (MASM) for Windows — no framework, just Winsock and raw socket handling. The whole executable is 9 KB.",
       "github": "https://github.com/Deadlici0us/Win64-httpdLite",
       "githubtext": "Source code",
       "masm": true,
@@ -69,7 +69,7 @@
       "image": "/echod.svg",
       "alt_img": "Terminal-style placeholder for the Win64-echod echo server",
       "title": "Win64-echod",
-      "description": "A tiny TCP echo server implemented in x86-64 assembly (MASM) on Windows — a deep dive into low-level networking with Winsock.",
+      "description": "A tiny TCP echo server in x86-64 assembly (MASM) for Windows — just Winsock and raw TCP sockets. The executable is 6 KB.",
       "github": "https://github.com/Deadlici0us/Win64-echod",
       "githubtext": "Source code",
       "masm": true,

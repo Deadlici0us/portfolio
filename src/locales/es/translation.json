@@ -28,7 +28,7 @@
   },
   "cards": {
     "1": {
-      "image": "/JSONSortFlow.png",
+      "image": "/JSONSortFlow.gif",
       "alt_img": "Captura del visualizador de ordenamiento JSONSortFlow",
       "title": "JSONSortFlow",
       "description": "El API backend que construí detrás de este visualizador — endpoints en contenedor que transmiten paso a paso las operaciones de Burbuja, Merge y Quick Sort al frontend.",
@@ -42,7 +42,7 @@
       "docker": true
     },
     "2": {
-      "image": "/Pathfinding.png",
+      "image": "/Pathfinding.gif",
       "alt_img": "Captura del visualizador de pathfinding",
       "title": "Pathfinding Visualizer",
       "description": "El API backend que construí detrás de este visualizador — endpoints para A*, BFS, DFS y Dijkstra que transmiten cada paso de la búsqueda a una grilla interactiva.",
@@ -59,7 +59,7 @@
       "image": "/httpdlite.svg",
       "alt_img": "Marcador de posición estilo terminal para el servidor HTTP Win64-httpdLite",
       "title": "Win64-httpdLite",
-      "description": "Un servidor HTTP/1.1 mínimo escrito desde cero en ensamblador x86-64 (MASM) para Windows — sin frameworks, solo Winsock y manejo de sockets en bruto.",
+      "description": "Un servidor HTTP/1.1 mínimo escrito desde cero en ensamblador x86-64 (MASM) para Windows — sin frameworks, solo Winsock y manejo de sockets en bruto. El ejecutable completo es de 9 KB.",
       "github": "https://github.com/Deadlici0us/Win64-httpdLite",
       "githubtext": "Código fuente",
       "masm": true,
@@ -69,7 +69,7 @@
       "image": "/echod.svg",
       "alt_img": "Marcador de posición estilo terminal para el servidor echo Win64-echod",
       "title": "Win64-echod",
-      "description": "Un pequeño servidor TCP echo implementado en ensamblador x86-64 (MASM) en Windows — una inmersión en redes de bajo nivel con Winsock.",
+      "description": "Un pequeño servidor TCP echo en ensamblador x86-64 (MASM) para Windows — solo Winsock y sockets TCP en bruto. El ejecutable es de 6 KB.",
       "github": "https://github.com/Deadlici0us/Win64-echod",
       "githubtext": "Código fuente",
       "masm": true,

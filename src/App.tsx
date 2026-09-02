@@ -12,23 +12,15 @@ import Pathfinding from './components/Pathfinding.tsx';
 import './i18n.tsx';
 import { I18nextProvider } from 'react-i18next';
 
-// Determine the initial theme value
-const savedTheme = localStorage.getItem('theme');
-const prefersDarkScheme = window.matchMedia(
-  '(prefers-color-scheme: dark)'
-).matches;
+// Determine the initial theme value — dark is default, system preference ignored
+const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+const initialTheme: 'light' | 'dark' = savedTheme ?? 'dark';
 
-// Default to light theme, then check savedTheme or prefersDarkScheme
-let initialTheme: 'light' | 'dark' = 'light';
-if (savedTheme) {
-  initialTheme = savedTheme as 'light' | 'dark';
-} else if (prefersDarkScheme) {
-  initialTheme = 'dark';
-}
-
-//Save
+//Apply and persist
 document.body.setAttribute('data-theme', initialTheme);
-localStorage.setItem('theme', initialTheme);
+if (!savedTheme) {
+  localStorage.setItem('theme', initialTheme);
+}
 
 function Homepage() {
   return (
