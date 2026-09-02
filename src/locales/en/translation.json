@@ -92,7 +92,6 @@
   "loading": "Loading...",
   "sorted": "Sorted",
   "sorting": "Sorting...",
-  "pathfinding": "Searching...",
   "start-sorting": "Sort it",
   "start-pathfinding": "Find the path",
   "JSF-title": "Algorithm",
@@ -105,7 +104,8 @@
     "subtitle": "Watch sorting algorithms do their thing, one swap at a time."
   },
   "pathfinding": {
-    "subtitle": "Explore how search algorithms navigate a maze, step by step."
+    "subtitle": "Explore how search algorithms navigate a maze, step by step.",
+    "searching": "Searching..."
   },
   "contact": {
     "header": "Let's connect",

@@ -147,7 +147,7 @@ const Pathfinding = () => {
               onClick={handleStart}
               disabled={isSearching}
             >
-              {isSearching ? t('pathfinding') : t('start-pathfinding')}
+              {isSearching ? t('pathfinding.searching') : t('start-pathfinding')}
             </button>
 
             <button

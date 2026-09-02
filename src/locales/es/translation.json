@@ -92,7 +92,6 @@
   "loading": "Cargando...",
   "sorted": "Ordenado",
   "sorting": "Ordenando...",
-  "pathfinding": "Buscando...",
   "start-sorting": "Ordenar",
   "start-pathfinding": "Buscar ruta",
   "JSF-title": "Algoritmo",
@@ -105,7 +104,8 @@
     "subtitle": "Observa los algoritmos de ordenamiento en acción, intercambio por intercambio."
   },
   "pathfinding": {
-    "subtitle": "Explora cómo los algoritmos de búsqueda recorren un laberinto, paso a paso."
+    "subtitle": "Explora cómo los algoritmos de búsqueda recorren un laberinto, paso a paso.",
+    "searching": "Buscando..."
   },
   "contact": {
     "header": "Hablemos",
