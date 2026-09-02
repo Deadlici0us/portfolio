@@ -67,9 +67,9 @@
     },
     "4": {
       "image": "/echod.svg",
-      "alt_img": "Marcador de posición estilo terminal para el servidor echo Win64-echod",
+      "alt_img": "Marcador de posición estilo terminal para el servidor de eco (echo) Win64-echod",
       "title": "Win64-echod",
-      "description": "Un pequeño servidor TCP echo en ensamblador x86-64 (MASM) para Windows — solo Winsock y sockets TCP en bruto. El ejecutable es de 6 KB.",
+      "description": "Un pequeño servidor TCP de eco (echo) en ensamblador x86-64 (MASM) para Windows — solo Winsock y sockets TCP en bruto. El ejecutable es de 6 KB.",
       "github": "https://github.com/Deadlici0us/Win64-echod",
       "githubtext": "Código fuente",
       "masm": true,
