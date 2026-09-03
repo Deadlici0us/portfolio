@@ -1,7 +1,6 @@
 .grid {
   justify-self: center;
   display: grid;
-  grid-template-columns: repeat(32, 1fr);
   gap: 1px;
   width: min(100%, 30rem);
   aspect-ratio: 1 / 1;
@@ -15,7 +14,7 @@
 .cell {
   background-color: var(--cell-default);
   aspect-ratio: 1 / 1;
-  transition: background-color 0.1s;
+  transition: background-color var(--transition-fast);
 }
 
 .cell-obstacle {
@@ -56,6 +55,6 @@
   display: inline-block;
   width: 0.75rem;
   height: 0.75rem;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   border: 1px solid var(--color-border-strong);
 }

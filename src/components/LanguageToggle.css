@@ -10,7 +10,6 @@
   background-color: var(--color-surface);
   cursor: pointer;
   width: fit-content;
-  animation: fade-down 0.5s 0.4s backwards;
   transition:
     border-color var(--transition-fast),
     background-color var(--transition-fast);
@@ -61,6 +60,6 @@
 .flag {
   width: 1.05rem;
   height: auto;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   box-shadow: var(--shadow-sm);
 }

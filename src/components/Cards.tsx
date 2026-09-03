@@ -59,101 +59,105 @@ function Card({
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <article className="card">
-      <div className="card_body">
-        <figure className="card_image">
+      <div className="card-body">
+        <figure className="card-image">
           {!isLoaded && <div className="image-placeholder">{t('loading')}</div>}
           <img
             src={image}
             alt={alt_img}
-            className={`card_image ${isLoaded ? 'loaded' : 'hidden'}`}
+            className={isLoaded ? 'loaded' : 'hidden'}
             onLoad={() => setIsLoaded(true)}
           />
         </figure>
-        <h2 className="card_title">{title}</h2>
-        <p className="card_description">{description}</p>
-        <div className="card_links">
+        <h2 className="card-title">{title}</h2>
+        <p className="card-description">{description}</p>
+        <div className="card-links">
           {www && wwwtext && (
             <a
               href={www}
-              className="link_style"
+              className="text-link"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faGlobe} className="link_icon" />
+              <FontAwesomeIcon icon={faGlobe} className="link-icon" />
               <span>{wwwtext}</span>
             </a>
           )}
           <a
             href={github}
-            className="link_style"
+            className="text-link"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faGithubBrand} className="link_icon" />
+            <FontAwesomeIcon icon={faGithubBrand} className="link-icon" />
             <span>{githubtext}</span>
           </a>
         </div>
-        <ul className="card_stacks">
+        <ul className="card-stacks">
           {docker && (
-            <li className="stack_item">
-              <img src={dockerIcon} alt="Docker" className="stack_icon" />
-              <span className="stack_name">Docker</span>
+            <li className="stack-item">
+              <img src={dockerIcon} alt="Docker" className="stack-icon" />
+              <span className="stack-name">Docker</span>
             </li>
           )}
           {javascript && (
-            <li className="stack_item">
-              <img src={javascriptIcon} alt="JavaScript" className="stack_icon" />
-              <span className="stack_name">JavaScript</span>
+            <li className="stack-item">
+              <img
+                src={javascriptIcon}
+                alt="JavaScript"
+                className="stack-icon"
+              />
+              <span className="stack-name">JavaScript</span>
             </li>
           )}
           {node && (
-            <li className="stack_item">
-              <img src={nodeIcon} alt="Node.js" className="stack_icon" />
-              <span className="stack_name">Node.js</span>
+            <li className="stack-item">
+              <img src={nodeIcon} alt="Node.js" className="stack-icon" />
+              <span className="stack-name">Node.js</span>
             </li>
           )}
           {postgre && (
-            <li className="stack_item">
-              <img src={postgreIcon} alt="PostgreSQL" className="stack_icon" />
-              <span className="stack_name">PostgreSQL</span>
+            <li className="stack-item">
+              <img src={postgreIcon} alt="PostgreSQL" className="stack-icon" />
+              <span className="stack-name">PostgreSQL</span>
             </li>
           )}
           {react && (
-            <li className="stack_item">
-              <img src={reactIcon} alt="ReactJS" className="stack_icon" />
-              <span className="stack_name">ReactJS</span>
+            <li className="stack-item">
+              <img src={reactIcon} alt="ReactJS" className="stack-icon" />
+              <span className="stack-name">ReactJS</span>
             </li>
           )}
           {rust && (
-            <li className="stack_item">
-              <img src={rustIcon} alt="Rust" className="stack_icon" />
-              <span className="stack_name">Rust</span>
+            <li className="stack-item">
+              <img src={rustIcon} alt="Rust" className="stack-icon" />
+              <span className="stack-name">Rust</span>
             </li>
           )}
           {typescript && (
-            <li className="stack_item">
+            <li className="stack-item">
               <img
                 src={typescriptIcon}
                 alt="TypeScript"
-                className="stack_icon"
+                className="stack-icon"
               />
-              <span className="stack_name">TypeScript</span>
+              <span className="stack-name">TypeScript</span>
             </li>
           )}
           {wasm && (
-            <li className="stack_item">
-              <img src={wasmIcon} alt="WebAssembly" className="stack_icon" />
-              <span className="stack_name">WebAssembly</span>
+            <li className="stack-item">
+              <img src={wasmIcon} alt="WebAssembly" className="stack-icon" />
+              <span className="stack-name">WebAssembly</span>
             </li>
           )}
           {masm && (
-            <li className="stack_item">
-              <span className="stack_name">MASM</span>
+            <li className="stack-item">
+              <span className="stack-name">MASM</span>
             </li>
           )}
           {win64 && (
-            <li className="stack_item">
-              <span className="stack_name">Win64</span>
+            <li className="stack-item">
+              <span className="stack-name">Win64</span>
             </li>
           )}
         </ul>
@@ -171,8 +175,11 @@ function Cards() {
     <section
       ref={ref}
       className={`cards ${isIntersecting ? 'show' : ''}`}
-      aria-label={t('cards-title')}
+      aria-labelledby="cards-heading"
     >
+      <h2 id="cards-heading" className="section-heading cards-heading">
+        {t('cards-title')}
+      </h2>
       {Object.keys(cardData).map((key, index) => (
         <Card key={index} {...cardData[key]} />
       ))}

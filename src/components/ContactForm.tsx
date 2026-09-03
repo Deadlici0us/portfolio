@@ -115,13 +115,13 @@ function ContactForm() {
           <div className="checkmark"></div>
         </div>
       )}
-      <div className="contact_info">
+      <div className="contact-info">
         <h2 id="contact-heading" className="section-heading">
           {t('contact.header')}
         </h2>
         <p className="contact-text">{t('contact.text')}</p>
         <p>
-          <a className="contact-links" href={'mailto:' + t('contact.email')}>
+          <a className="text-link" href={'mailto:' + t('contact.email')}>
             {t('contact.email')}
           </a>
         </p>
@@ -162,7 +162,7 @@ function ContactForm() {
           </li>
         </ul>
       </div>
-      <form onSubmit={handleSubmit} className="contact_form">
+      <form onSubmit={handleSubmit} className="contact-form">
         <div className="field-container">
           <label htmlFor="name" className="visually-hidden">
             {t('form.name')}
@@ -244,7 +244,7 @@ function ContactForm() {
         </div>
 
         <div className="button-container">
-          <button type="submit" className="btn btn-primary send_button">
+          <button type="submit" className="btn btn-primary send-button">
             {t('form.send')}
           </button>
           <p className="error-p" aria-live="polite">

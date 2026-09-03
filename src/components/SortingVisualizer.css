@@ -4,9 +4,13 @@
   justify-content: center;
   gap: 1px;
   width: 100%;
-  height: 220px;
+  height: clamp(232px, 34vh, 288px);
   padding-block: var(--space-4);
   overflow-x: auto;
+}
+
+.array-bar-container {
+  min-width: 0;
 }
 
 .array-bar {
@@ -15,8 +19,8 @@
   background-color: var(--bar-color);
   border-radius: 1px 1px 0 0;
   transition:
-    height 0.1s ease,
-    background-color 0.1s ease;
+    height var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .array-bar.highlight {

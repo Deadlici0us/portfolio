@@ -10,9 +10,10 @@
     "toggle": "Cambiar al tema {{theme}}"
   },
   "language": {
-    "toggle": "Toggle language"
+    "toggle": "Cambiar idioma"
   },
   "links-label": "Mis redes",
+  "skip-link": "Saltar al contenido principal",
   "cards-title": "Proyectos destacados",
   "formErrors": {
     "name": "Por favor ingresa tu nombre",
@@ -101,11 +102,31 @@
   "new-array-button": "Nuevo arreglo",
   "new-matrix-button": "Nueva cuadrícula",
   "sorter": {
-    "subtitle": "Observa los algoritmos de ordenamiento en acción, intercambio por intercambio."
+    "title": "JSONSortFlow",
+    "subtitle": "Observa los algoritmos de ordenamiento en acción, intercambio por intercambio.",
+    "algorithms": {
+      "bubble": "Ordenamiento burbuja",
+      "merge": "Ordenamiento por mezcla",
+      "quick": "Ordenamiento rápido"
+    }
   },
   "pathfinding": {
+    "title": "Visualizador de búsqueda de caminos",
     "subtitle": "Explora cómo los algoritmos de búsqueda recorren un laberinto, paso a paso.",
-    "searching": "Buscando..."
+    "searching": "Buscando...",
+    "legend": {
+      "start": "Inicio",
+      "end": "Fin",
+      "wall": "Muro",
+      "explored": "Explorado",
+      "path": "Camino"
+    },
+    "algorithms": {
+      "astar": "Búsqueda A*",
+      "bfs": "Búsqueda en anchura",
+      "dfs": "Búsqueda en profundidad",
+      "dijkstra": "Algoritmo de Dijkstra"
+    }
   },
   "contact": {
     "header": "Hablemos",

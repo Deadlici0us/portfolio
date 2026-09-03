@@ -73,7 +73,7 @@ function Sorter() {
   return (
     <section className="visualizer-page">
       <header className="visualizer-header">
-        <h1>JSONSortFlow</h1>
+        <h1>{t('sorter.title')}</h1>
         <p className="visualizer-subtitle">{t('sorter.subtitle')}</p>
       </header>
 
@@ -90,9 +90,11 @@ function Sorter() {
               onChange={(e) => setAlgorithm(e.target.value)}
               disabled={isSorting}
             >
-              <option value="bubble-sort">Bubble Sort</option>
-              <option value="merge-sort">Merge Sort</option>
-              <option value="quick-sort">Quick Sort</option>
+              <option value="bubble-sort">
+                {t('sorter.algorithms.bubble')}
+              </option>
+              <option value="merge-sort">{t('sorter.algorithms.merge')}</option>
+              <option value="quick-sort">{t('sorter.algorithms.quick')}</option>
             </select>
           </div>
 
@@ -121,7 +123,7 @@ function Sorter() {
 
           <div className="button-row">
             <button
-              className="btn btn-primary sort-button"
+              className="btn btn-primary visualizer-button"
               onClick={handleStartSorting}
               disabled={loading || isSorting || sorted}
             >
@@ -132,7 +134,7 @@ function Sorter() {
                   : t('start-sorting')}
             </button>
             <button
-              className="btn btn-secondary sort-button"
+              className="btn btn-secondary visualizer-button"
               onClick={handleGenerateNewArray}
               disabled={loading || isSorting}
             >

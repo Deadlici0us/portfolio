@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { PathfindingResponse } from './utils/PathfindingAPIService';
+import { Point } from './utils/MatrixGenerator';
 
 interface Props {
   matrix: number[][];
   apiData: PathfindingResponse | null;
   speed: number;
+  start: Point;
+  end: Point;
   onComplete: () => void;
 }
 
@@ -12,6 +15,8 @@ const PathfindingVisualizer = ({
   matrix,
   apiData,
   speed,
+  start,
+  end,
   onComplete,
 }: Props) => {
   const [exploredShown, setExploredShown] = useState<Set<string>>(new Set());
@@ -50,15 +55,20 @@ const PathfindingVisualizer = ({
     return () => clearInterval(explorationInterval);
   }, [apiData, onComplete, speed]);
 
+  const columns = matrix.length > 0 ? matrix[0].length : 0;
+
   return (
-    <div className="grid">
+    <div
+      className="grid"
+      style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+    >
       {matrix.map((row, rIdx) =>
         row.map((cell, cIdx) => {
           const coord = `${cIdx},${rIdx}`; // API uses [x, y]
           let status = '';
 
-          if (cIdx === 0 && rIdx === 0) status = 'cell-start';
-          else if (cIdx === 31 && rIdx === 31) status = 'cell-end';
+          if (cIdx === start[0] && rIdx === start[1]) status = 'cell-start';
+          else if (cIdx === end[0] && rIdx === end[1]) status = 'cell-end';
           else if (cell === 1) status = 'cell-obstacle';
           else if (pathShown.has(coord)) status = 'cell-path';
           else if (exploredShown.has(coord)) status = 'cell-explored';

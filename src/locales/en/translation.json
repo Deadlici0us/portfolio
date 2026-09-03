@@ -10,9 +10,10 @@
     "toggle": "Switch to {{theme}} theme"
   },
   "language": {
-    "toggle": "Cambiar idioma"
+    "toggle": "Change language"
   },
   "links-label": "Social links",
+  "skip-link": "Skip to main content",
   "cards-title": "Featured projects",
   "formErrors": {
     "name": "Please enter your name",
@@ -101,11 +102,31 @@
   "new-array-button": "New array",
   "new-matrix-button": "New grid",
   "sorter": {
-    "subtitle": "Watch sorting algorithms do their thing, one swap at a time."
+    "title": "JSONSortFlow",
+    "subtitle": "Watch sorting algorithms do their thing, one swap at a time.",
+    "algorithms": {
+      "bubble": "Bubble Sort",
+      "merge": "Merge Sort",
+      "quick": "Quick Sort"
+    }
   },
   "pathfinding": {
+    "title": "Pathfinding Visualizer",
     "subtitle": "Explore how search algorithms navigate a maze, step by step.",
-    "searching": "Searching..."
+    "searching": "Searching...",
+    "legend": {
+      "start": "Start",
+      "end": "End",
+      "wall": "Wall",
+      "explored": "Explored",
+      "path": "Path"
+    },
+    "algorithms": {
+      "astar": "A* Search",
+      "bfs": "Breadth First Search",
+      "dfs": "Depth First Search",
+      "dijkstra": "Dijkstra's Algorithm"
+    }
   },
   "contact": {
     "header": "Let's connect",

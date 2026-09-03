@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useEffect, useState, ReactNode } from 'react';
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -10,6 +10,18 @@ interface ThemeProviderProps {
   initialTheme?: 'light' | 'dark'; // Add initialTheme prop
 }
 
+const THEME_COLOR: Record<'light' | 'dark', string> = {
+  light: '#f6f7fb',
+  dark: '#0e101a',
+};
+
+const applyThemeColor = (theme: 'light' | 'dark') => {
+  const meta = document.querySelector<HTMLMetaElement>(
+    'meta[name="theme-color"]'
+  );
+  if (meta) meta.content = THEME_COLOR[theme];
+};
+
 export const ThemeContext = createContext<ThemeContextType | undefined>(
   undefined
 );
@@ -20,10 +32,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>(initialTheme || 'dark');
 
+  useEffect(() => {
+    applyThemeColor(theme);
+  }, [theme]);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.body.setAttribute('data-theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   };
 

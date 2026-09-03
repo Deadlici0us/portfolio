@@ -6,9 +6,9 @@
 .brand {
   display: inline-flex;
   align-items: baseline;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  font-size: var(--text-lg);
+  font-size: var(--text-2xl);
   color: var(--color-text);
 }
 
@@ -18,4 +18,10 @@
 
 .brand-dot {
   color: var(--color-accent);
+}
+
+.brand-mark {
+  font-family: var(--font-mono);
+  color: var(--color-text);
+  letter-spacing: 0.02em;
 }

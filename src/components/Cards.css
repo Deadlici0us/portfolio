@@ -3,10 +3,19 @@
   gap: var(--space-8);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   padding-block: var(--space-12);
+}
+
+.cards-heading {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin: 0;
+}
+
+html.js .cards {
   opacity: 0;
 }
 
-.cards.show {
+html.js .cards.show {
   opacity: 1;
   animation: fade-right 0.6s ease-out forwards;
 }
@@ -27,26 +36,26 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(var(--lift-hover));
   box-shadow: var(--shadow-lg);
   border-color: var(--color-accent-border);
 }
 
-.card_body {
+.card-body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   padding: var(--space-6);
 }
 
-.card_image {
+.card-image {
   margin: 0 0 var(--space-4);
   border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: var(--color-surface-2);
 }
 
-.card_image img {
+.card-image img {
   display: none;
   width: 100%;
   height: 100%;
@@ -54,11 +63,11 @@
   aspect-ratio: 16 / 9;
 }
 
-.card_image img.loaded {
+.card-image img.loaded {
   display: block;
 }
 
-.card_image img.hidden {
+.card-image img.hidden {
   display: none;
 }
 
@@ -71,7 +80,7 @@
   font-size: var(--text-sm);
 }
 
-.card_title {
+.card-title {
   margin: 0 0 var(--space-2);
   font-size: var(--text-xl);
   font-weight: 700;
@@ -79,7 +88,7 @@
   color: var(--color-text);
 }
 
-.card_description {
+.card-description {
   margin: 0 0 var(--space-4);
   flex-grow: 1;
   font-size: var(--text-sm);
@@ -87,38 +96,18 @@
   color: var(--color-text-secondary);
 }
 
-.card_links {
+.card-links {
   display: flex;
   justify-content: center;
   gap: var(--space-6);
   margin-bottom: var(--space-4);
 }
 
-.link_style {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-accent);
-  border-radius: var(--radius-sm);
-  transition:
-    color var(--transition-fast),
-    text-decoration-color var(--transition-fast);
-}
-
-.link_style:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent-border);
-  text-underline-offset: 4px;
-}
-
-.link_icon {
+.link-icon {
   font-size: 0.95rem;
 }
 
-.card_stacks {
+.card-stacks {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -129,7 +118,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-.stack_item {
+.stack-item {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -142,12 +131,12 @@
   color: var(--color-text-secondary);
 }
 
-.stack_icon {
+.stack-icon {
   width: 1rem;
   height: 1rem;
   object-fit: contain;
 }
 
-.stack_name {
+.stack-name {
   line-height: 1;
 }

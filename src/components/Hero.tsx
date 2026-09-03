@@ -19,9 +19,9 @@ function Hero() {
           <p className="terminal-line">
             <span className="terminal-prompt">$</span> whoami
           </p>
-          <p className="terminal-line terminal-output terminal-output-name">
+          <h1 className="terminal-line terminal-output terminal-output-name">
             {t('Anibal')}
-          </p>
+          </h1>
           <p className="terminal-line">
             <span className="terminal-prompt">$</span> cat role.txt
           </p>

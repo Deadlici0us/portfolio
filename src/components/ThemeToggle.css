@@ -16,7 +16,6 @@
     border-color var(--transition-fast),
     background-color var(--transition-fast),
     transform var(--transition-fast);
-  animation: fade-down 0.5s 0.4s backwards;
 }
 
 .theme-toggle:hover {

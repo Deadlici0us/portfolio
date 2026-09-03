@@ -10,7 +10,7 @@ function Links() {
   const { t } = useTranslation();
 
   return (
-    <ul className="links_panel" aria-label={t('links-label')}>
+    <ul className="links-panel" aria-label={t('links-label')}>
       <li>
         <a
           href="https://www.linkedin.com/in/anibal-f/"
@@ -18,9 +18,9 @@ function Links() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          className="link_icon_button"
+          className="link-icon-button"
         >
-          <FontAwesomeIcon icon={faLinkedinIn} className="links_icon" />
+          <FontAwesomeIcon icon={faLinkedinIn} className="links-icon" />
         </a>
       </li>
       <li>
@@ -30,9 +30,9 @@ function Links() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="link_icon_button"
+          className="link-icon-button"
         >
-          <FontAwesomeIcon icon={faGithub} className="links_icon" />
+          <FontAwesomeIcon icon={faGithub} className="links-icon" />
         </a>
       </li>
       <li>
@@ -40,9 +40,9 @@ function Links() {
           href="#contact"
           title={t('nav.contact')}
           aria-label={t('nav.contact')}
-          className="link_icon_button"
+          className="link-icon-button"
         >
-          <FontAwesomeIcon icon={faEnvelope} className="links_icon" />
+          <FontAwesomeIcon icon={faEnvelope} className="links-icon" />
         </a>
       </li>
     </ul>

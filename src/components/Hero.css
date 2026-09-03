@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-6);
+  min-height: 88vh;
   min-height: 88dvh;
   padding-block: var(--space-12) var(--space-8);
   animation: fade-up 0.6s 0.05s backwards;
@@ -37,15 +38,15 @@
 }
 
 .terminal-light-red {
-  background-color: #f87171;
+  background-color: var(--color-terminal-red);
 }
 
 .terminal-light-yellow {
-  background-color: #fbbf24;
+  background-color: var(--color-terminal-yellow);
 }
 
 .terminal-light-green {
-  background-color: #34d399;
+  background-color: var(--color-terminal-green);
 }
 
 .terminal-title {
@@ -78,6 +79,7 @@
 }
 
 .terminal-output-name {
+  margin: 0;
   font-size: var(--text-4xl);
   font-weight: 800;
   letter-spacing: -0.03em;

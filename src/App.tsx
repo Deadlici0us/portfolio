@@ -10,14 +10,14 @@ import Footer from './components/Footer.tsx';
 import Sorter from './components/Sorter.tsx';
 import Pathfinding from './components/Pathfinding.tsx';
 import './i18n.tsx';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 
 // Determine the initial theme value — dark is default, system preference ignored
 const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
 const initialTheme: 'light' | 'dark' = savedTheme ?? 'dark';
 
 //Apply and persist
-document.body.setAttribute('data-theme', initialTheme);
+document.documentElement.setAttribute('data-theme', initialTheme);
 if (!savedTheme) {
   localStorage.setItem('theme', initialTheme);
 }
@@ -33,6 +33,8 @@ function Homepage() {
 }
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <ThemeProvider initialTheme={initialTheme}>
       <I18nextProvider>
@@ -44,7 +46,7 @@ function App() {
               <div className="bg-orb bg-orb-3"></div>
             </div>
             <a className="skip-link" href="#main-content">
-              Skip to main content
+              {t('skip-link')}
             </a>
             <Navbar />
             <main id="main-content" className="app-main" tabIndex={-1}>

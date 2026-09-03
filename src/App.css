@@ -3,7 +3,9 @@
    ============================================================ */
 
 :root {
-  color-scheme: dark;
+  /* Light baseline = no-JS fallback. The app default is dark (set by the
+     pre-paint script in public/index.html and App.tsx). */
+  color-scheme: light;
 
   --font-sans:
     'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
@@ -22,6 +24,7 @@
   --text-4xl: 2.25rem;
   --text-5xl: clamp(2.5rem, 6vw, 4rem);
 
+  --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -35,8 +38,9 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --space-16: 4rem;
-  --space-24: 6rem;
+
+  --space-panel: clamp(1.5rem, 4vw, 3rem);
+  --lift-hover: -3px;
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
@@ -65,7 +69,6 @@
 
   --color-danger: #dc2626;
   --color-danger-subtle: #fef2f2;
-  --color-info: #2563eb;
   --color-success: #059669;
   --color-success-subtle: #ecfdf5;
 
@@ -93,9 +96,13 @@
   --grid-gap-color: #cfd5e6;
   --bar-color: #4f46e5;
   --bar-highlight: #f59e0b;
+
+  --color-terminal-red: #f87171;
+  --color-terminal-yellow: #fbbf24;
+  --color-terminal-green: #34d399;
 }
 
-body[data-theme='dark'] {
+:root[data-theme='dark'] {
   color-scheme: dark;
 
   --color-bg: #0e101a;
@@ -118,7 +125,6 @@ body[data-theme='dark'] {
 
   --color-danger: #f87171;
   --color-danger-subtle: rgba(248, 113, 113, 0.14);
-  --color-info: #60a5fa;
   --color-success: #34d399;
   --color-success-subtle: rgba(52, 211, 153, 0.14);
 
@@ -260,11 +266,7 @@ a {
   height: 38rem;
   top: -10rem;
   left: -12rem;
-  background: radial-gradient(
-    circle,
-    var(--color-orb-accent),
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--color-orb-accent), transparent 70%);
   animation: drift 12s ease-in-out infinite alternate;
 }
 
@@ -286,11 +288,7 @@ a {
   height: 24rem;
   top: 55%;
   left: 55%;
-  background: radial-gradient(
-    circle,
-    var(--color-orb-violet),
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--color-orb-violet), transparent 70%);
   animation: drift 8s ease-in-out infinite alternate;
 }
 
@@ -422,17 +420,6 @@ a {
 
 /* ---------- keyframes ---------- */
 
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -477,16 +464,6 @@ a {
   }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-}
-
 @keyframes blink {
   to {
     visibility: hidden;
@@ -500,6 +477,28 @@ a {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* ---------- shared text links ---------- */
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
+}
+
+.text-link:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-border);
+  text-underline-offset: 4px;
 }
 
 /* ---------- reduced motion ---------- */

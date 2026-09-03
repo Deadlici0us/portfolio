@@ -1,4 +1,4 @@
-.links_panel {
+.links-panel {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +8,7 @@
   list-style: none;
 }
 
-.link_icon_button {
+.link-icon-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27,18 +27,18 @@
     box-shadow var(--transition-fast);
 }
 
-.link_icon_button:hover {
+.link-icon-button:hover {
   color: var(--color-btn-text);
   background-color: var(--color-accent);
   border-color: var(--color-accent);
-  transform: translateY(-3px);
+  transform: translateY(var(--lift-hover));
   box-shadow: var(--shadow-md);
 }
 
-.link_icon_button:active {
+.link-icon-button:active {
   transform: translateY(-1px);
 }
 
-.links_icon {
+.links-icon {
   font-size: 1.35rem;
 }

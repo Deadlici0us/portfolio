@@ -77,7 +77,7 @@ const Pathfinding = () => {
   return (
     <section className="visualizer-page">
       <header className="visualizer-header">
-        <h1>Pathfinding Visualizer</h1>
+        <h1>{t('pathfinding.title')}</h1>
         <p className="visualizer-subtitle">{t('pathfinding.subtitle')}</p>
       </header>
 
@@ -93,10 +93,18 @@ const Pathfinding = () => {
               value={algorithm}
               onChange={(e) => setAlgorithm(e.target.value)}
             >
-              <option value="astar-search">A* Search</option>
-              <option value="bfs-search">Breadth First Search</option>
-              <option value="dfs-search">Depth First Search</option>
-              <option value="dijkstra-search">Dijkstra's Algorithm</option>
+              <option value="astar-search">
+                {t('pathfinding.algorithms.astar')}
+              </option>
+              <option value="bfs-search">
+                {t('pathfinding.algorithms.bfs')}
+              </option>
+              <option value="dfs-search">
+                {t('pathfinding.algorithms.dfs')}
+              </option>
+              <option value="dijkstra-search">
+                {t('pathfinding.algorithms.dijkstra')}
+              </option>
             </select>
           </div>
 
@@ -121,38 +129,40 @@ const Pathfinding = () => {
           <div className="grid-legend" aria-hidden="true">
             <span className="legend-item">
               <i className="legend-swatch cell-start" />
-              Start
+              {t('pathfinding.legend.start')}
             </span>
             <span className="legend-item">
               <i className="legend-swatch cell-end" />
-              End
+              {t('pathfinding.legend.end')}
             </span>
             <span className="legend-item">
               <i className="legend-swatch cell-obstacle" />
-              Wall
+              {t('pathfinding.legend.wall')}
             </span>
             <span className="legend-item">
               <i className="legend-swatch cell-explored" />
-              Explored
+              {t('pathfinding.legend.explored')}
             </span>
             <span className="legend-item">
               <i className="legend-swatch cell-path" />
-              Path
+              {t('pathfinding.legend.path')}
             </span>
           </div>
 
           <div className="button-row">
             <button
-              className="btn btn-primary sort-button"
+              className="btn btn-primary visualizer-button"
               onClick={handleStart}
               disabled={isSearching}
             >
-              {isSearching ? t('pathfinding.searching') : t('start-pathfinding')}
+              {isSearching
+                ? t('pathfinding.searching')
+                : t('start-pathfinding')}
             </button>
 
             <button
               onClick={handleReset}
-              className="btn btn-secondary sort-button"
+              className="btn btn-secondary visualizer-button"
             >
               {t('new-matrix-button')}
             </button>
@@ -173,6 +183,8 @@ const Pathfinding = () => {
           matrix={matrix}
           apiData={apiData}
           speed={speed}
+          start={START_NODE}
+          end={END_NODE}
           onComplete={handleComplete}
         />
       </div>
