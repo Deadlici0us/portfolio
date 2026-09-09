@@ -90,8 +90,8 @@
       "wasm": true
     },
     "6": {
-      "image": "/arboleda.svg",
-      "alt_img": "Marcador de posición del backend BArboleda",
+      "image": "/arboleda-demo.gif",
+      "alt_img": "Mapa animado de árboles de Buenos Aires cerca del Obelisco con árboles individuales y un popup con info del árbol",
       "title": "BArboleda",
       "description": "Backend geoespacial (Java + Spring Boot) con todos los árboles de Buenos Aires — índice 2dsphere en MongoDB para búsqueda por cercanía como Uber o Tinder, celdas en caché Redis, distribuido con Docker.",
       "www": "/BArboleda-Demo",
@@ -146,6 +146,10 @@
   "arboleda": {
     "title": "BArboleda Demo",
     "subtitle": "Cada árbol a 1000m — elegí un punto de referencia o usá tu GPS.",
+    "docs": {
+      "swagger": "Docs API (Swagger)",
+      "openapi": "OpenAPI JSON"
+    },
     "landmarks": {
       "label": "Puntos de referencia",
       "obelisco": "Obelisco",

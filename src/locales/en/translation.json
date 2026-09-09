@@ -90,8 +90,8 @@
       "wasm": true
     },
     "6": {
-      "image": "/arboleda.svg",
-      "alt_img": "BArboleda backend placeholder",
+      "image": "/arboleda-demo.gif",
+      "alt_img": "Animated map of Buenos Aires street trees near the Obelisk zoomed to individual trees with a tree info popup open",
       "title": "BArboleda",
       "description": "Geospatial backend (Java + Spring Boot) serving every Buenos Aires street tree — MongoDB 2dsphere index for nearby search like Uber or Tinder, Redis-cached grid cells, shipped with Docker.",
       "www": "/BArboleda-Demo",
@@ -146,6 +146,10 @@
   "arboleda": {
     "title": "BArboleda Demo",
     "subtitle": "Every street tree within 1000m — pick a landmark or use your GPS.",
+    "docs": {
+      "swagger": "API docs (Swagger)",
+      "openapi": "OpenAPI JSON"
+    },
     "landmarks": {
       "label": "Landmarks",
       "obelisco": "Obelisk",

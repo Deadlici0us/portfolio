@@ -9,10 +9,13 @@ import {
 import { speciesColor } from './utils/ArboledaColors.tsx';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import './Arboleda.css';
 
 const apiService = new ArboledaApiServiceImpl();
+
+const SWAGGER_UI_URL = 'https://api.anibal-flores.com/BArboleda/swagger-ui/index.html';
+const OPENAPI_URL = 'https://api.anibal-flores.com/BArboleda/v3/api-docs';
 
 interface Landmark {
   key: 'obelisco' | 'universitaria' | 'japones' | 'botanico';
@@ -163,6 +166,16 @@ function Arboleda() {
       <header className="visualizer-header">
         <h1>{t('arboleda.title')}</h1>
         <p className="visualizer-subtitle">{t('arboleda.subtitle')}</p>
+        <div className="arboleda-docs">
+          <a className="text-link" href={SWAGGER_UI_URL} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faBook} aria-hidden="true" />
+            <span>{t('arboleda.docs.swagger')}</span>
+          </a>
+          <a className="text-link" href={OPENAPI_URL} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faBook} aria-hidden="true" />
+            <span>{t('arboleda.docs.openapi')}</span>
+          </a>
+        </div>
       </header>
 
       <div className="visual-section panel arboleda-section">
