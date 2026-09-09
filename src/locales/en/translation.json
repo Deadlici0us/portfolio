@@ -181,6 +181,10 @@
       "district": "Commune",
       "coordinates": "Coordinates"
     },
+    "selected": {
+      "title": "Selected tree",
+      "close": "Clear selection"
+    },
     "map": {
       "label": "Map of street trees near the selected location"
     }

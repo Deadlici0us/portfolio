@@ -181,6 +181,10 @@
       "district": "Comuna",
       "coordinates": "Coordenadas"
     },
+    "selected": {
+      "title": "Árbol seleccionado",
+      "close": "Limpiar selección"
+    },
     "map": {
       "label": "Mapa de árboles cercanos a la ubicación elegida"
     }

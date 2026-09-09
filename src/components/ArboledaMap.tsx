@@ -14,6 +14,8 @@ interface ArboledaMapProps {
   center: ArboledaCenter;
   trees: ArbolResponse[];
   colorFor: (species: string) => string;
+  selectedId?: number | null;
+  onSelectTree?: (tree: ArbolResponse | null) => void;
 }
 
 type TreeFeature = GeoJSON.Feature<
@@ -39,7 +41,19 @@ function escapeHtml(value: string | number): string {
     .replace(/"/g, '&quot;');
 }
 
-function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
+// Small viewports (mobile): details render as an inline card below the map,
+// so markers select instead of opening an in-map popup that would cover it.
+function isMobileMap(container: HTMLElement | null): boolean {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    return true;
+  }
+  return (container?.clientWidth ?? window.innerWidth) < 500;
+}
+
+function ArboledaMap({ center, trees, colorFor, selectedId = null, onSelectTree }: ArboledaMapProps) {
   const { t, i18n } = useTranslation();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
@@ -51,12 +65,15 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
   // nro_registro of the tree whose popup is currently open (null when closed).
   // Used to re-open it after a re-render so Leaflet autopan (moveend) can't kill it.
   const openTreeIdRef = useRef<number | null>(null);
+  // Set on popupopen: the next moveend is the autopan settling, not the user
+  // moving — skipping that one rebuild keeps the popup alive (no flicker).
+  const isPopupPanningRef = useRef(false);
   // Last rendered viewport + index identity: skips duplicate renders
   // (zoomend + moveend fire together; setView with the same view).
   const lastRenderRef = useRef<{ key: string; index: object } | null>(null);
   // Latest render inputs for the Leaflet event callbacks (registered once).
-  const liveRef = useRef({ trees, colorFor, t, language: i18n.language });
-  liveRef.current = { trees, colorFor, t, language: i18n.language };
+  const liveRef = useRef({ trees, colorFor, t, language: i18n.language, selectedId, onSelectTree });
+  liveRef.current = { trees, colorFor, t, language: i18n.language, selectedId, onSelectTree };
 
   const renderClusters = () => {
     const map = mapRef.current;
@@ -73,10 +90,10 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
     const bounds = map.getBounds();
     const renderKey =
       [
-        bounds.getWest().toFixed(4),
-        bounds.getSouth().toFixed(4),
-        bounds.getEast().toFixed(4),
-        bounds.getNorth().toFixed(4),
+        bounds.getWest().toFixed(3),
+        bounds.getSouth().toFixed(3),
+        bounds.getEast().toFixed(3),
+        bounds.getNorth().toFixed(3),
         zoom,
         language,
       ].join(',');
@@ -86,6 +103,13 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
       lastRender.key === renderKey &&
       lastRender.index === index
     ) {
+      return;
+    }
+    // Autopan settling after a popup opened: keep existing markers so the
+    // popup is not destroyed mid-animation (open-then-close flicker).
+    if (isPopupPanningRef.current) {
+      isPopupPanningRef.current = false;
+      lastRenderRef.current = { key: renderKey, index };
       return;
     }
     lastRenderRef.current = { key: renderKey, index };
@@ -125,13 +149,23 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
       } else {
         const tree = (props as { tree: ArbolResponse }).tree;
         const fill = color(tree.nombre_cientifico);
+        const mobile = isMobileMap(containerRef.current);
+        const isSelected = mobile && liveRef.current.selectedId === tree.nro_registro;
         const marker = L.circleMarker([tree.lat, tree.long], {
-          radius: 8,
+          radius: isSelected ? 10 : 8,
           color: '#ffffff',
-          weight: 1.5,
+          weight: isSelected ? 2.5 : 1.5,
           fillColor: fill,
           fillOpacity: 0.92,
         });
+        if (mobile) {
+          marker.on('click', (e) => {
+            L.DomEvent.stopPropagation(e);
+            liveRef.current.onSelectTree?.(tree);
+          });
+          marker.addTo(layer);
+          continue;
+        }
         marker.bindPopup(
           `<div class="arboleda-popup">` +
             `<p class="arboleda-popup-species" style="border-left-color:${escapeHtml(fill)};">${escapeHtml(tree.nombre_cientifico)}</p>` +
@@ -148,10 +182,12 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
             autoPanPadding: L.point(20, 20),
             maxWidth: 260,
             keepInView: false,
+            closeOnClick: false,
           }
         );
         marker.on('popupopen', () => {
           openTreeIdRef.current = tree.nro_registro;
+          isPopupPanningRef.current = true;
         });
         marker.on('popupclose', () => {
           if (openTreeIdRef.current === tree.nro_registro) {
@@ -182,6 +218,7 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
       maxZoom: MAX_ZOOM,
       maxBounds: MAX_BOUNDS,
       maxBoundsViscosity: 1.0,
+      closePopupOnClick: false,
     }).setView([center.lat, center.lon], FOCUS_ZOOM);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: MAX_ZOOM,
@@ -191,15 +228,23 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
     clusterLayerRef.current = L.layerGroup().addTo(map);
     userLayerRef.current = L.layerGroup().addTo(map);
     map.on('moveend zoomend', renderClusters);
+    const deselectOnBackgroundTap = () => {
+      if (isMobileMap(containerRef.current)) {
+        liveRef.current.onSelectTree?.(null);
+      }
+    };
+    map.on('click', deselectOnBackgroundTap);
     mapRef.current = map;
     return () => {
       map.off('moveend zoomend', renderClusters);
+      map.off('click', deselectOnBackgroundTap);
       map.remove();
       mapRef.current = null;
       clusterLayerRef.current = null;
       userLayerRef.current = null;
       indexRef.current = null;
       openTreeIdRef.current = null;
+      isPopupPanningRef.current = false;
       lastRenderRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -256,10 +301,17 @@ function ArboledaMap({ center, trees, colorFor }: ArboledaMapProps) {
     // New dataset: the previously open tree is gone, drop it instead of
     // re-opening a same-id marker unprompted on a later render.
     openTreeIdRef.current = null;
+    isPopupPanningRef.current = false;
     mapRef.current?.closePopup();
     renderClusters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trees]);
+
+  // Refresh the selected-marker highlight (mobile inline card, no popups).
+  useEffect(() => {
+    renderClusters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId]);
 
   return (
     <div

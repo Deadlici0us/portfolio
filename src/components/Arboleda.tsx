@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ArboledaMap, { ArboledaCenter } from './ArboledaMap.tsx';
 import {
   ArboledaApiServiceImpl,
+  ArbolResponse,
   ArbolSearchResponse,
   gridKey,
 } from './utils/ArboledaApiService.tsx';
@@ -39,6 +40,7 @@ function Arboleda() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [gpsState, setGpsState] = useState<GpsState>('idle');
+  const [selectedTree, setSelectedTree] = useState<ArbolResponse | null>(null);
   const [legendOpen, setLegendOpen] = useState(
     () => typeof window === 'undefined' || window.innerWidth >= 832
   );
@@ -51,6 +53,7 @@ function Arboleda() {
     setCenter({ lat, lon });
     setActiveKey(key);
     setError(null);
+    setSelectedTree(null);
     const cached = cacheRef.current.get(key3);
     if (cached) {
       setResponse(cached);
@@ -110,6 +113,37 @@ function Arboleda() {
     );
   };
 
+  const handleSelectTree = useCallback((tree: ArbolResponse | null) => {
+    setSelectedTree(tree);
+  }, []);
+
+  const trees = useMemo(() => response?.items ?? [], [response]);
+
+  // Drop the selection when a new bucket no longer contains the tree.
+  useEffect(() => {
+    if (selectedTree === null) {
+      return;
+    }
+    const stillVisible = trees.some((item) => item.nro_registro === selectedTree.nro_registro);
+    if (!stillVisible) {
+      setSelectedTree(null);
+    }
+  }, [trees, selectedTree]);
+
+  // Escape clears the inline selection (mobile card).
+  useEffect(() => {
+    if (selectedTree === null) {
+      return;
+    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedTree(null);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [selectedTree]);
+
   const species = useMemo(() => {
     if (!response) {
       return [];
@@ -123,8 +157,6 @@ function Arboleda() {
     }
     return [...counts.entries()].sort((a, b) => b[1] - a[1]);
   }, [response]);
-
-  const trees = response?.items ?? [];
 
   return (
     <section className="visualizer-page">
@@ -217,7 +249,57 @@ function Arboleda() {
         </div>
 
         <div className="arboleda-map-wrap">
-          <ArboledaMap center={center} trees={trees} colorFor={speciesColor} />
+          <ArboledaMap
+            center={center}
+            trees={trees}
+            colorFor={speciesColor}
+            selectedId={selectedTree?.nro_registro ?? null}
+            onSelectTree={handleSelectTree}
+          />
+          {selectedTree && (
+            <div className="arboleda-selected" role="status" aria-live="polite">
+              <div className="arboleda-selected-header">
+                <span className="option-label">{t('arboleda.selected.title')}</span>
+                <button
+                  className="btn btn-secondary arboleda-selected-close"
+                  onClick={() => setSelectedTree(null)}
+                  aria-label={t('arboleda.selected.close')}
+                >
+                  ×
+                </button>
+              </div>
+              <p
+                className="arboleda-popup-species"
+                style={{ borderLeftColor: speciesColor(selectedTree.nombre_cientifico) }}
+              >
+                {selectedTree.nombre_cientifico}
+              </p>
+              <dl>
+                <div>
+                  <dt>{t('arboleda.tree.registry')}</dt>
+                  <dd>{selectedTree.nro_registro}</dd>
+                </div>
+                <div>
+                  <dt>{t('arboleda.tree.height')}</dt>
+                  <dd>{selectedTree.altura_arbol} m</dd>
+                </div>
+                <div>
+                  <dt>{t('arboleda.tree.diameter')}</dt>
+                  <dd>{selectedTree.diametro_altura_pecho} cm</dd>
+                </div>
+                <div>
+                  <dt>{t('arboleda.tree.district')}</dt>
+                  <dd>{selectedTree.comuna}</dd>
+                </div>
+                <div>
+                  <dt>{t('arboleda.tree.coordinates')}</dt>
+                  <dd>
+                    {selectedTree.lat.toFixed(5)}, {selectedTree.long.toFixed(5)}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          )}
           <div className="arboleda-legend">
             <button
               className="btn btn-secondary arboleda-legend-toggle"
