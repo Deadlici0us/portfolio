@@ -1,0 +1,174 @@
+.arboleda-section {
+  align-items: start;
+}
+
+.arboleda-landmarks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.arboleda-landmarks .visualizer-button {
+  min-width: 0;
+}
+
+.arboleda-grid {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.arboleda-map-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.arboleda-map {
+  width: 100%;
+  height: 30rem;
+  min-height: 22rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-surface-2);
+  z-index: 0;
+}
+
+@media (width <= 52rem) {
+  .arboleda-map {
+    height: 22rem;
+    min-height: 18rem;
+  }
+}
+
+/* ---------- cluster bubbles ---------- */
+
+.arboleda-cluster-wrap {
+  background: none;
+  border: none;
+}
+
+.arboleda-cluster {
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  text-align: center;
+  color: var(--color-text-on-accent);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+/* ---------- legend overlay ---------- */
+
+.arboleda-legend {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  max-width: min(16rem, 70%);
+}
+
+.arboleda-legend-toggle {
+  min-width: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.arboleda-legend-list {
+  width: 100%;
+  max-height: 18rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--space-2);
+  list-style: none;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.arboleda-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.arboleda-legend-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arboleda-legend-count {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+/* ---------- tree popup (themed Leaflet overrides) ---------- */
+
+.arboleda-map .leaflet-popup-content-wrapper {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.arboleda-map .leaflet-popup-content {
+  margin: var(--space-3) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.arboleda-map .leaflet-popup-tip {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.arboleda-map .leaflet-popup-close-button {
+  color: var(--color-text-muted) !important;
+}
+
+.arboleda-popup-species {
+  margin: 0 0 var(--space-2);
+  padding-left: var(--space-2);
+  font-weight: 700;
+  font-style: italic;
+  border-left: 4px solid var(--color-accent);
+}
+
+.arboleda-popup dl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.arboleda-popup dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.arboleda-popup dt {
+  color: var(--color-text-muted);
+}
+
+.arboleda-popup dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-align: right;
+}

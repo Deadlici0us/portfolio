@@ -88,6 +88,20 @@
       "javascript": true,
       "rust": true,
       "wasm": true
+    },
+    "6": {
+      "image": "/arboleda.svg",
+      "alt_img": "Marcador de posición del mapa de árboles BArboleda",
+      "title": "Explorador BArboleda",
+      "description": "El frontend en vivo de mi backend BArboleda — un mapa Leaflet + Supercluster con cada árbol de Buenos Aires a 1000m de cualquier punto de referencia o tu GPS, con colores por especie.",
+      "www": "/arboleda",
+      "wwwtext": "Web",
+      "github": "https://github.com/Deadlici0us/BArboleda-backend",
+      "githubtext": "Código fuente",
+      "react": true,
+      "node": true,
+      "typescript": true,
+      "docker": true
     }
   },
   "loading": "Cargando...",
@@ -126,6 +140,48 @@
       "bfs": "Búsqueda en anchura",
       "dfs": "Búsqueda en profundidad",
       "dijkstra": "Algoritmo de Dijkstra"
+    }
+  },
+  "arboleda": {
+    "title": "Explorador BArboleda",
+    "subtitle": "Cada árbol a 1000m — elegí un punto de referencia o usá tu GPS.",
+    "landmarks": {
+      "label": "Puntos de referencia",
+      "planetario": "Planetario",
+      "reserva": "Reserva Ecológica",
+      "alsina": "Puente Alsina",
+      "obelisco": "Obelisco"
+    },
+    "gps": {
+      "label": "Tu ubicación",
+      "button": "Usar mi ubicación GPS",
+      "locating": "Localizando...",
+      "denied": "Permiso de ubicación denegado — mostrando el último punto de referencia.",
+      "unavailable": "No se pudo obtener tu ubicación — mostrando el último punto de referencia."
+    },
+    "loading": "Cargando árboles...",
+    "truncatedWarning": "Demasiados árboles en esta zona — solo se muestran los 1000 más cercanos.",
+    "empty": "No se encontraron árboles a 1000m de este punto.",
+    "stats": {
+      "label": "Resultados",
+      "count": "{{count}} árboles a 1000m"
+    },
+    "legend": {
+      "show": "Ver especies",
+      "hide": "Ocultar especies"
+    },
+    "cluster": {
+      "title": "{{count}} árboles — seleccionar para acercar"
+    },
+    "tree": {
+      "registry": "Registro",
+      "height": "Altura",
+      "diameter": "Diámetro del tronco",
+      "district": "Comuna",
+      "coordinates": "Coordenadas"
+    },
+    "map": {
+      "label": "Mapa de árboles cercanos a la ubicación elegida"
     }
   },
   "contact": {

@@ -88,6 +88,20 @@
       "javascript": true,
       "rust": true,
       "wasm": true
+    },
+    "6": {
+      "image": "/arboleda.svg",
+      "alt_img": "BArboleda tree map placeholder",
+      "title": "BArboleda Explorer",
+      "description": "The live frontend for my BArboleda backend — a Leaflet + Supercluster map of every Buenos Aires street tree within 1000m of any landmark or your GPS, with per-species colours.",
+      "www": "/arboleda",
+      "wwwtext": "Web",
+      "github": "https://github.com/Deadlici0us/BArboleda-backend",
+      "githubtext": "Source code",
+      "react": true,
+      "node": true,
+      "typescript": true,
+      "docker": true
     }
   },
   "loading": "Loading...",
@@ -126,6 +140,48 @@
       "bfs": "Breadth First Search",
       "dfs": "Depth First Search",
       "dijkstra": "Dijkstra's Algorithm"
+    }
+  },
+  "arboleda": {
+    "title": "BArboleda Explorer",
+    "subtitle": "Every street tree within 1000m — pick a landmark or use your GPS.",
+    "landmarks": {
+      "label": "Landmarks",
+      "planetario": "Planetarium",
+      "reserva": "Ecological Reserve",
+      "alsina": "Puente Alsina",
+      "obelisco": "Obelisk"
+    },
+    "gps": {
+      "label": "Your location",
+      "button": "Use my GPS location",
+      "locating": "Locating...",
+      "denied": "Location permission denied — showing the last landmark instead.",
+      "unavailable": "Could not get your location — showing the last landmark instead."
+    },
+    "loading": "Loading trees...",
+    "truncatedWarning": "Too many trees in this area — only the closest 1000 shown.",
+    "empty": "No trees found within 1000m of this point.",
+    "stats": {
+      "label": "Results",
+      "count": "{{count}} trees within 1000m"
+    },
+    "legend": {
+      "show": "Show species",
+      "hide": "Hide species"
+    },
+    "cluster": {
+      "title": "{{count}} trees — select to zoom in"
+    },
+    "tree": {
+      "registry": "Registry",
+      "height": "Height",
+      "diameter": "Trunk diameter",
+      "district": "Commune",
+      "coordinates": "Coordinates"
+    },
+    "map": {
+      "label": "Map of street trees near the selected location"
     }
   },
   "contact": {

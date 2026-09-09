@@ -9,6 +9,7 @@ import ContactForm from './components/ContactForm.tsx';
 import Footer from './components/Footer.tsx';
 import Sorter from './components/Sorter.tsx';
 import Pathfinding from './components/Pathfinding.tsx';
+import Arboleda from './components/Arboleda.tsx';
 import './i18n.tsx';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/sorter" element={<Sorter />} />
                 <Route path="/pathfinding" element={<Pathfinding />} />
+                <Route path="/arboleda" element={<Arboleda />} />
               </Routes>
             </main>
             <Footer />
