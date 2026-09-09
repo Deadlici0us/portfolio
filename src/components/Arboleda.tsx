@@ -14,16 +14,16 @@ import './Arboleda.css';
 const apiService = new ArboledaApiServiceImpl();
 
 interface Landmark {
-  key: 'planetario' | 'reserva' | 'alsina' | 'obelisco';
+  key: 'obelisco' | 'universitaria' | 'japones' | 'botanico';
   lat: number;
   lon: number;
 }
 
 const LANDMARKS: Landmark[] = [
-  { key: 'planetario', lat: -34.5697, lon: -58.4124 },
-  { key: 'reserva', lat: -34.6185, lon: -58.3446 },
-  { key: 'alsina', lat: -34.662, lon: -58.405 },
   { key: 'obelisco', lat: -34.6037, lon: -58.3816 },
+  { key: 'universitaria', lat: -34.5414, lon: -58.4431 },
+  { key: 'japones', lat: -34.5753, lon: -58.4094 },
+  { key: 'botanico', lat: -34.5825, lon: -58.4174 },
 ];
 
 type GpsState = 'idle' | 'locating' | 'denied' | 'unavailable';

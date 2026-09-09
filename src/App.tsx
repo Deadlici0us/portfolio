@@ -55,7 +55,7 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/sorter" element={<Sorter />} />
                 <Route path="/pathfinding" element={<Pathfinding />} />
-                <Route path="/arboleda" element={<Arboleda />} />
+                <Route path="/BArboleda-Demo" element={<Arboleda />} />
               </Routes>
             </main>
             <Footer />

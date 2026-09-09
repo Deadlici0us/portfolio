@@ -91,16 +91,17 @@
     },
     "6": {
       "image": "/arboleda.svg",
-      "alt_img": "BArboleda tree map placeholder",
-      "title": "BArboleda Explorer",
-      "description": "The live frontend for my BArboleda backend — a Leaflet + Supercluster map of every Buenos Aires street tree within 1000m of any landmark or your GPS, with per-species colours.",
-      "www": "/arboleda",
-      "wwwtext": "Web",
+      "alt_img": "BArboleda backend placeholder",
+      "title": "BArboleda",
+      "description": "Geospatial backend (Java + Spring Boot) serving every Buenos Aires street tree — MongoDB 2dsphere index for nearby search like Uber or Tinder, Redis-cached grid cells, shipped with Docker.",
+      "www": "/BArboleda-Demo",
+      "wwwtext": "Live demo",
       "github": "https://github.com/Deadlici0us/BArboleda-backend",
       "githubtext": "Source code",
-      "react": true,
-      "node": true,
-      "typescript": true,
+      "java": true,
+      "mongodb": true,
+      "redis": true,
+      "springboot": true,
       "docker": true
     }
   },
@@ -143,14 +144,14 @@
     }
   },
   "arboleda": {
-    "title": "BArboleda Explorer",
+    "title": "BArboleda Demo",
     "subtitle": "Every street tree within 1000m — pick a landmark or use your GPS.",
     "landmarks": {
       "label": "Landmarks",
-      "planetario": "Planetarium",
-      "reserva": "Ecological Reserve",
-      "alsina": "Puente Alsina",
-      "obelisco": "Obelisk"
+      "obelisco": "Obelisk",
+      "universitaria": "University City",
+      "japones": "Japanese Garden",
+      "botanico": "Botanical Garden"
     },
     "gps": {
       "label": "Your location",

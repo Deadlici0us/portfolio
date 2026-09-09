@@ -91,16 +91,17 @@
     },
     "6": {
       "image": "/arboleda.svg",
-      "alt_img": "Marcador de posición del mapa de árboles BArboleda",
-      "title": "Explorador BArboleda",
-      "description": "El frontend en vivo de mi backend BArboleda — un mapa Leaflet + Supercluster con cada árbol de Buenos Aires a 1000m de cualquier punto de referencia o tu GPS, con colores por especie.",
-      "www": "/arboleda",
-      "wwwtext": "Web",
+      "alt_img": "Marcador de posición del backend BArboleda",
+      "title": "BArboleda",
+      "description": "Backend geoespacial (Java + Spring Boot) con todos los árboles de Buenos Aires — índice 2dsphere en MongoDB para búsqueda por cercanía como Uber o Tinder, celdas en caché Redis, distribuido con Docker.",
+      "www": "/BArboleda-Demo",
+      "wwwtext": "Demo en vivo",
       "github": "https://github.com/Deadlici0us/BArboleda-backend",
       "githubtext": "Código fuente",
-      "react": true,
-      "node": true,
-      "typescript": true,
+      "java": true,
+      "mongodb": true,
+      "redis": true,
+      "springboot": true,
       "docker": true
     }
   },
@@ -143,14 +144,14 @@
     }
   },
   "arboleda": {
-    "title": "Explorador BArboleda",
+    "title": "BArboleda Demo",
     "subtitle": "Cada árbol a 1000m — elegí un punto de referencia o usá tu GPS.",
     "landmarks": {
       "label": "Puntos de referencia",
-      "planetario": "Planetario",
-      "reserva": "Reserva Ecológica",
-      "alsina": "Puente Alsina",
-      "obelisco": "Obelisco"
+      "obelisco": "Obelisco",
+      "universitaria": "Ciudad Universitaria",
+      "japones": "Jardín Japonés",
+      "botanico": "Jardín Botánico"
     },
     "gps": {
       "label": "Tu ubicación",
