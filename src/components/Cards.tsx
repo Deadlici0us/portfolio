@@ -6,11 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faGithub as faGithubBrand } from '@fortawesome/free-brands-svg-icons';
 import dockerIcon from '../assets/docker.png';
+import javaIcon from '../assets/java.svg';
 import javascriptIcon from '../assets/javascript.png';
-import reactIcon from '../assets/react.png';
+import mongodbIcon from '../assets/mongodb.svg';
 import nodeIcon from '../assets/nodejs.png';
 import postgreIcon from '../assets/postgre.png';
+import reactIcon from '../assets/react.png';
+import redisIcon from '../assets/redis.svg';
 import rustIcon from '../assets/rust.png';
+import springIcon from '../assets/spring.svg';
 import typescriptIcon from '../assets/typescript.png';
 import wasmIcon from '../assets/wasm.png';
 import useOnScreen from './useOnScreen.tsx';
@@ -25,11 +29,15 @@ interface CardProps {
   github: string;
   githubtext: string;
   docker?: boolean;
+  java?: boolean;
   javascript?: boolean;
+  mongodb?: boolean;
   node?: boolean;
   postgre?: boolean;
   react?: boolean;
+  redis?: boolean;
   rust?: boolean;
+  springboot?: boolean;
   typescript?: boolean;
   wasm?: boolean;
   masm?: boolean;
@@ -46,11 +54,15 @@ function Card({
   github,
   githubtext,
   docker,
+  java,
   javascript,
+  mongodb,
   node,
   postgre,
   react,
+  redis,
   rust,
+  springboot,
   typescript,
   wasm,
   masm,
@@ -100,6 +112,12 @@ function Card({
               <span className="stack-name">Docker</span>
             </li>
           )}
+          {java && (
+            <li className="stack-item">
+              <img src={javaIcon} alt="Java" className="stack-icon" />
+              <span className="stack-name">Java</span>
+            </li>
+          )}
           {javascript && (
             <li className="stack-item">
               <img
@@ -108,6 +126,12 @@ function Card({
                 className="stack-icon"
               />
               <span className="stack-name">JavaScript</span>
+            </li>
+          )}
+          {mongodb && (
+            <li className="stack-item">
+              <img src={mongodbIcon} alt="MongoDB" className="stack-icon" />
+              <span className="stack-name">MongoDB</span>
             </li>
           )}
           {node && (
@@ -128,10 +152,26 @@ function Card({
               <span className="stack-name">ReactJS</span>
             </li>
           )}
+          {redis && (
+            <li className="stack-item">
+              <img src={redisIcon} alt="Redis" className="stack-icon" />
+              <span className="stack-name">Redis</span>
+            </li>
+          )}
           {rust && (
             <li className="stack-item">
               <img src={rustIcon} alt="Rust" className="stack-icon" />
               <span className="stack-name">Rust</span>
+            </li>
+          )}
+          {springboot && (
+            <li className="stack-item">
+              <img
+                src={springIcon}
+                alt="Spring Boot"
+                className="stack-icon"
+              />
+              <span className="stack-name">Spring Boot</span>
             </li>
           )}
           {typescript && (
@@ -170,6 +210,9 @@ function Cards() {
   const { t } = useTranslation();
   const cardData = t('cards', { returnObjects: true });
   const { isIntersecting, ref } = useOnScreen(0.1);
+  // Display order: Quadtree, BArboleda, JSONSortFlow, Pathfinding, httpdLite, echod.
+  // (Numeric keys always enumerate ascending, so JSON block order can't set this.)
+  const cardOrder = ['5', '6', '1', '2', '3', '4'];
 
   return (
     <section
@@ -180,8 +223,8 @@ function Cards() {
       <h2 id="cards-heading" className="section-heading cards-heading">
         {t('cards-title')}
       </h2>
-      {Object.keys(cardData).map((key, index) => (
-        <Card key={index} {...cardData[key]} />
+      {cardOrder.map((key) => (
+        <Card key={key} {...cardData[key]} />
       ))}
     </section>
   );
